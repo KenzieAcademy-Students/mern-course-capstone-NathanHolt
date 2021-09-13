@@ -1,20 +1,21 @@
 import React, { useEffect } from 'react'
+import { useHistory } from "react-router-dom";
 import { useApiFetch } from "util/api"
 import LoadingSpinner from 'components/LoadingSpinner'
 import Button from 'react-bootstrap/Button'
 
 export default function HomePage(props) {
   const {error, isLoading, response} = useApiFetch("/sample")
+  const history = useHistory()
 
   useEffect(() => {
     let user = localStorage.getItem("user")
     if (user) {
-      console.log(`redirect to ${user}`)
-    }
+      history.push(`/user/${user}`)    }
   }, [])
 
   const handleSignIn = () => {
-    console.log('redirect to sign in')
+    history.push("/log")
   }
   
   return ( 
