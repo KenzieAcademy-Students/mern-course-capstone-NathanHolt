@@ -1,17 +1,84 @@
 
 /* Your CSS Here */
 
-.home {
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #38516e;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #577c85;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(34, 103, 194);
+}
+
+
+html {
+  background: rgb(46, 152, 184);
+}
+
+.app {
+  background: rgb(46, 152, 184);
   text-align: center;
+  height: 100%;
+}
+
+.home {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  margin: 80px;
+  width: 75vw;
+  margin: 20px auto;
+  padding: 20px 60px;
+  border-radius: 30px;
+  background: rgba(236, 255, 255, 0.8);
+  overflow-x: hidden;
 }
 
+.content {
+  padding: 60px;
+  border-radius: 20px;
+  width: 90%;
+  margin: 20px auto;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section {
+  padding: 60px 200px;
+  border-radius: 10px;
+  background: rgba(236, 255, 255);
+  transform: rotate(4deg);
+  width: 115%;
+}
+
+.info {
+  transform: rotate(-4deg);
+}
+
+.twist {
+  transform: rotate(-4deg);
+}
+
+.anti-twist {
+  transform: rotate(4deg);
+}
 
 .feature {
   display: flex;
   justify-content: center;
   margin: 10px;
+}
+
+ul {
+  list-style-type: none;
 }
