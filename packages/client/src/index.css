@@ -1,6 +1,17 @@
 
 /* Your CSS Here */
 
-main {
+.home {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin: 80px;
+}
+
+
+.feature {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
 }
