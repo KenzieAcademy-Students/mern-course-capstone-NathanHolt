@@ -60,6 +60,12 @@ export default function HomePage(props) {
                 <h5>Nic Lai</h5>
                 <p>Blurb (Person can write their )</p>
               </li>
+            </ul>
+          </div>
+        </div>
+        <div className="anti-about section">
+          <div className='anti-twist'>
+            <ul>
               <li>
                 <h5>Anthony Klein</h5>
                 <p>Blurb (Person can write their )</p>

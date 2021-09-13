@@ -68,6 +68,10 @@ html {
   transform: rotate(-4deg);
 }
 
+.anti-about {
+  transform: rotate(-4deg);
+}
+
 .twist {
   transform: rotate(-4deg);
 }
