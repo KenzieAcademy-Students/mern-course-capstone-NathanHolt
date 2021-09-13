@@ -12,7 +12,7 @@ import { useProvideAuth } from 'hooks/useAuth'
 import { useRequireAuth } from 'hooks/useRequireAuth'
 import axios from 'utils/axiosConfig.js'
 
-
+ 
 export default function UserDetailPage({
   match: {
     params: { uid },
