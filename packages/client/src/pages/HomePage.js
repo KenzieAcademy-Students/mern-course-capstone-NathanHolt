@@ -18,7 +18,7 @@ export default function HomePage(props) {
   }
   
   return ( 
-    <main>
+    <div className='home'>
       <div className="intro">
         <h1>This is ParallelPaths</h1>
         <h3>This the premier timeline app</h3>
@@ -26,11 +26,29 @@ export default function HomePage(props) {
         <h3>What are you waiting for?</h3>
         <Button variant="outline-info" onClick={() => handleSignIn()}>Sign In/Up</Button>
       </div>
+      <div className="info">
+        <h3>Any Questions?</h3>
+        <div className="feature">
+          <img alt="Timeline"/>
+          <p>Look at this neat feature</p>
+        </div>
+        <div className="feature">
+          <p>Look at this neat feature</p>
+          <img/>
+        </div>
+        <div className="feature">
+          <img/>
+          <p>Look at this neat feature</p>
+        </div>      
+      </div>
+      <div className="about">
+        <h3>Our Team</h3>
+      </div>
       { error && <h3 style={{color:"red"}}>Error Loading Data: {error}</h3>}
       { isLoading &&  <LoadingSpinner></LoadingSpinner>}
       {/* { !error && response && (
         <div>Username: {response.username}</div>
       )} */}
-    </main>
+    </div>
   )
 }
