@@ -1,17 +1,53 @@
 
 /* Your CSS Here */
 
-.home {
+html {
+  background: rgb(46, 152, 184);
+}
+
+.app {
+  background: rgb(46, 152, 184);
   text-align: center;
+}
+
+.home {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  margin: 80px;
+  width: 75vw;
+  margin: 60px auto;
+  padding: 60px;
+  border-radius: 30px;
+  background: rgba(236, 255, 255, 0.8);
 }
 
+.section {
+  border-radius: 10px;
+  padding: 60px;
+  background: rgba(236, 255, 255);
+  transform: rotate(4deg);
+  width: 60vw;
+  margin: 20px auto;
+}
+
+.info {
+  transform: rotate(-4deg);
+}
+
+.twist {
+  transform: rotate(-4deg);
+}
+
+.anti-twist {
+  transform: rotate(4deg);
+}
 
 .feature {
   display: flex;
   justify-content: center;
   margin: 10px;
+}
+
+ul {
+  list-style-type: none;
 }
