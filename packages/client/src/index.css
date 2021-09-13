@@ -1,6 +1,25 @@
 
 /* Your CSS Here */
 
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #38516e;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #577c85;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(34, 103, 194);
+}
+
+
 html {
   background: rgb(46, 152, 184);
 }
@@ -8,6 +27,7 @@ html {
 .app {
   background: rgb(46, 152, 184);
   text-align: center;
+  height: 100%;
 }
 
 .home {
