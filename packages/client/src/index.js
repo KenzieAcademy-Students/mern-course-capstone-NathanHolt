@@ -13,10 +13,9 @@ ReactDOM.render(
     <BrowserRouter>  
       <Switch>
         <Route exact path='/' component={HomePage} />
-        <Route exact path='/log' component={SignIn} />
-        <Route exact path='/story/:name' component={StoryPage} />
-        <Route exact path='/user/:name' component={UserPage} />
-        { /* Add more routes here */} 
+        <Route path='/log' component={SignIn} />
+        <Route path='/story/:name' component={StoryPage} />
+        <Route path='/user/:name' component={UserPage} />
       </Switch>
     </BrowserRouter>
   </React.StrictMode>,
