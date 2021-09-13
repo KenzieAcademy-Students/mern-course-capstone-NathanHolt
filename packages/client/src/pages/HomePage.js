@@ -1,4 +1,4 @@
-import React, {  useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useApiFetch } from "util/api"
 import LoadingSpinner from 'components/LoadingSpinner'
 import Button from 'react-bootstrap/Button'
