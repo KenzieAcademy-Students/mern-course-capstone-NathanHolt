@@ -21,7 +21,7 @@ export default function HomePage(props) {
     <div className='home'>
       <div className="intro">
         <h1>This is ParallelPaths</h1>
-        <h3>This the premier timeline app</h3>
+        <h3>This is <b>the</b> premier timeline app</h3>
         <p>There are other planning and day organization apps, google calendar, but what are doing differently is that we allow for multiple people to be tracked at once. This could be used by authors to keep track of continuity of all of the characters in their stories. It could also be used by managers to help team productivity in an agile workplace/remote workplace, especially when the team members are in different timezones.</p>
         <h3>What are you waiting for?</h3>
         <Button variant="outline-info" onClick={() => handleSignIn()}>Sign In/Up</Button>
@@ -34,15 +34,37 @@ export default function HomePage(props) {
         </div>
         <div className="feature">
           <p>Look at this neat feature</p>
-          <img/>
+          <img alt="Compare"/>
         </div>
         <div className="feature">
-          <img/>
+          <img alt="Add paths"/>
           <p>Look at this neat feature</p>
         </div>      
       </div>
       <div className="about">
         <h3>Our Team</h3>
+        <ul>
+          <li>
+            <h5>Nathan Holt</h5>
+            <p>Blurb (Person can write their )</p>
+          </li>
+          <li>
+            <h5>Jeffrey Benjamin</h5>
+            <p>Blurb (Person can write their )</p>
+          </li>
+          <li>
+            <h5>Nic Lai</h5>
+            <p>Blurb (Person can write their )</p>
+          </li>
+          <li>
+            <h5>Anthony Klein</h5>
+            <p>Blurb (Person can write their )</p>
+          </li>
+          <li>
+            <h5>Kevin Gomez</h5>
+            <p>Blurb (Person can write their )</p>
+          </li>
+        </ul>
       </div>
       { error && <h3 style={{color:"red"}}>Error Loading Data: {error}</h3>}
       { isLoading &&  <LoadingSpinner></LoadingSpinner>}
