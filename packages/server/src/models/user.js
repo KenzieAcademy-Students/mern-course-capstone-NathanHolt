@@ -6,7 +6,9 @@ const userSchema = new mongoose.Schema({
     type: String,
     unique: true,
     required: true,
+
   }
+  
 })
 
 const User = mongoose.model('User', userSchema)
