@@ -20,7 +20,7 @@ router.get("/" ,async(req, res, next) => {
 //   created: Date.now()
 // });
 
-router.post('/', requireAuth, async (request, response, next) => {
+router.post('/', async (request, response, next) => {
   
   const { name,author,characters } = request.body
   const { user } = request
