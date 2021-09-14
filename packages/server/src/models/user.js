@@ -1,5 +1,5 @@
-import mongoose from "mongoose";
-const { ObjectId } = mongoose.Schema.Types;
+import mongoose from 'mongoose'
+const { ObjectId } = mongoose.Schema.Types
 
 const userSchema = new mongoose.Schema({
   username: {
@@ -18,8 +18,15 @@ const userSchema = new mongoose.Schema({
     unique: true,
     required: true,
   },
-});
 
-const User = mongoose.model("User", userSchema);
+  storyboard: [
+    {
+      type: ObjectId,
+      ref: 'Story',
+    },
+  ],
+})
 
-export default User;
+const User = mongoose.model('User', userSchema)
+
+export default User
