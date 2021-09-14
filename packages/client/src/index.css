@@ -60,7 +60,7 @@ html {
   border-radius: 10px;
   background: rgb(222, 245, 255);
   transform: rotate(4deg);
-  width: 120%;
+  width: 100vw;
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
 }
 
@@ -74,10 +74,14 @@ html {
 
 .twist {
   transform: rotate(-4deg);
+  width: 60%;
+  margin: 0 auto;
 }
 
 .anti-twist {
   transform: rotate(4deg);
+  width: 60%;
+  margin: 0 auto;
 }
 
 .feature {
@@ -109,10 +113,14 @@ li {
   text-align: left;
 }
 
-li > img {
+li  img {
   width: 40%;
+  height: 180px;
+  width: 320px;
+  border-radius: 70px;
+  background: #283a4e;
 }
 
 li * {
-  margin: 20px 40px;
+  margin: 20px;
 }

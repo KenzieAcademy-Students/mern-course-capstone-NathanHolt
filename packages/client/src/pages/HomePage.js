@@ -31,7 +31,7 @@ export default function HomePage(props) {
         </div>
         <div className="info anti section">
           <div className='anti-twist'>
-            <h3>Any Questions?</h3>
+            <h3>The App</h3>
             <div className="feature">
               <img alt="Timeline"/>
               <p>I'm baby fashion axe coloring book mustache flannel bespoke kogi farm-to-table activated charcoal seitan fam biodiesel YOLO. Iceland wayfarers before they sold out unicorn leggings, farm-to-table la croix VHS. Skateboard iPhone twee, leggings offal sartorial actually VHS echo park cliche poke occupy ethical. Hexagon four loko la croix brunch pinterest af. Activated charcoal asymmetrical DIY post-ironic raclette, narwhal deep v. </p>
@@ -60,7 +60,7 @@ export default function HomePage(props) {
             <ul>
               <li>
                 <div className='member-text'>
-                  <h5>Nic Lai - <em>Position</em></h5>
+                  <h5>Nick Lai - <em>Position</em></h5>
                   <p>Blurb (Person can write their ) Pork belly freegan knausgaard activated charcoal listicle photo booth salvia pinterest jean shorts skateboard chia.</p>
                 </div>
                 <img alt="beauty shot"/>
@@ -72,13 +72,6 @@ export default function HomePage(props) {
                   <p> Lyft yr portland, +1 distillery put a bird on it jianbing paleo blog tousled ennui chillwave lumbersexual. Franzen fanny pack drinking vinegar, PBRB fixie biodiesel flexitarian coloring book. </p>
                 </div>
               </li>
-              <li>
-                <div className='member-text'>
-                  <h5>Nathan Holt - <em>Position</em></h5>
-                  <p>I'm baby keytar schlitz pitchfork flexitarian synth stumptown meggings jean shorts, retro viral. Gentrify whatever hella etsy mlkshk readymade locavore vegan.</p>
-                </div>
-                <img alt="beauty shot"/>
-              </li>
             </ul>
           </div>
         </div>
@@ -86,16 +79,29 @@ export default function HomePage(props) {
           <div className='anti-twist'>
             <ul>
               <li>
+                <div className='member-text'>
+                  <h5>Kevin Gomez - <em>Position</em></h5>
+                  <p> Cold-pressed copper mug distillery etsy next level irony. Chambray letterpress stumptown, post-ironic four dollar toast gochujang XOXO schlitz banjo poke ethical knausgaard. </p>
+                </div>
+                <img alt="beauty shot"/>
+              </li>
+              <li>
                 <img alt="beauty shot"/>
                 <div className='member-text'>
                   <h5>Anthony Klein - <em>Position</em></h5>
                   <p>Af forage polaroid, bitters shoreditch raw denim bicycle rights chambray selfies. Marfa cray flannel, cloud bread swag pickled meditation. VHS +1 letterpress chia gluten-free taiyaki. </p>
                 </div>
               </li>
+            </ul>
+          </div>
+        </div>
+        <div className="about section">
+          <div className='twist'>
+            <ul>
               <li>
                 <div className='member-text'>
-                  <h5>Kevin Gomez - <em>Position</em></h5>
-                  <p> Cold-pressed copper mug distillery etsy next level irony. Chambray letterpress stumptown, post-ironic four dollar toast gochujang XOXO schlitz banjo poke ethical knausgaard. </p>
+                  <h5>Nathan Holt - <em>Position</em></h5>
+                  <p>I'm baby keytar schlitz pitchfork flexitarian synth stumptown meggings jean shorts, retro viral. Gentrify whatever hella etsy mlkshk readymade locavore vegan.</p>
                 </div>
                 <img alt="beauty shot"/>
               </li>
