@@ -5,6 +5,7 @@ import HomePage from 'pages/HomePage'
 import SignIn from 'pages/SignIn'
 import StoryPage from 'pages/StoryPage'
 import UserPage from 'pages/UserPage'
+import TesterN from 'pages/TesterN'
 import './index.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -14,6 +15,7 @@ ReactDOM.render(
     <div className="app"> 
         <Switch>
           <Route exact path='/' component={HomePage} />
+          <Route exact path='/testn' component={TesterN} />
           <Route path='/log' component={SignIn} />
           <Route path='/story/:name' component={StoryPage} />
           <Route path='/user/:name' component={UserPage} />
