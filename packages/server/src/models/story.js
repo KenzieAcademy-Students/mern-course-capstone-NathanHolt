@@ -19,24 +19,8 @@ const storySchema = new mongoose.Schema(
     },
     characters: [
       {
-        name: {
-          type: String,
-          required: true,
-          maxlength: 30,
-        },
-        text: {
-          type: String,
-          maxLength: 120,
-        },
-        color: {
-          type: string,
-        },
-        paths: [
-          {
-            type: ObjectId,
-            ref: 'Path',
-          },
-        ],
+        type: ObjectId,
+        ref: 'Character',
       },
     ],
   },
