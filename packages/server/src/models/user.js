@@ -25,6 +25,7 @@ const userSchema = new mongoose.Schema({
       ref: 'Story',
     },
   ],
+  
 })
 
 const User = mongoose.model('User', userSchema)
