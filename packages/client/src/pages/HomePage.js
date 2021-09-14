@@ -22,7 +22,7 @@ export default function HomePage(props) {
         <div className="intro section">
           <div className='twist'>
             <h1>This is ParallelPaths</h1>
-            <h3>This is <b>the</b> premier timeline app</h3>
+            <h3><b>The</b> Premier Timeline App</h3>
             <p>There are other planning and day organization apps, google calendar, but what are doing differently is that we allow for multiple people to be tracked at once. This could be used by authors to keep track of continuity of all of the characters in their stories. It could also be used by managers to help team productivity in an agile workplace/remote workplace, especially when the team members are in different timezones.</p>
             <h3>What are you waiting for?</h3>
             <div className="d-grid gap-2">

@@ -1,5 +1,6 @@
 import React from 'react'
 import Action from 'components/Action'
+import LogOutBtn from 'components/LogOutBtn'
 
 
 export default function TesterN() {
@@ -18,6 +19,10 @@ export default function TesterN() {
             <div className="action-test">
                 {renderActions(8)}
             </div>
+            <div className="action-test">
+                {renderActions(3)}
+            </div>
+            <LogOutBtn />
         </div>
     )
 }
