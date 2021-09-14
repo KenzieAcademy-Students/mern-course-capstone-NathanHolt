@@ -101,3 +101,18 @@ html {
 ul {
   list-style-type: none;
 }
+
+li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+}
+
+li > img {
+  width: 40%;
+}
+
+li * {
+  margin: 20px 40px;
+}

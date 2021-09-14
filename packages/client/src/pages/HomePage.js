@@ -59,16 +59,25 @@ export default function HomePage(props) {
             <h3>Our Team</h3>
             <ul>
               <li>
-                <h5>Nathan Holt</h5>
-                <p>Blurb (Person can write their )</p>
+                <div className='member-text'>
+                  <h5>Nic Lai - <em>Position</em></h5>
+                  <p>Blurb (Person can write their ) Pork belly freegan knausgaard activated charcoal listicle photo booth salvia pinterest jean shorts skateboard chia.</p>
+                </div>
+                <img alt="beauty shot"/>
               </li>
               <li>
-                <h5>Jeffrey Benjamin</h5>
-                <p>Blurb (Person can write their )</p>
+                <img alt="beauty shot"/>
+                <div className='member-text'>
+                  <h5>Jeffrey Benjamin - <em>Position</em></h5>
+                  <p> Lyft yr portland, +1 distillery put a bird on it jianbing paleo blog tousled ennui chillwave lumbersexual. Franzen fanny pack drinking vinegar, PBRB fixie biodiesel flexitarian coloring book. </p>
+                </div>
               </li>
               <li>
-                <h5>Nic Lai</h5>
-                <p>Blurb (Person can write their )</p>
+                <div className='member-text'>
+                  <h5>Nathan Holt - <em>Position</em></h5>
+                  <p>I'm baby keytar schlitz pitchfork flexitarian synth stumptown meggings jean shorts, retro viral. Gentrify whatever hella etsy mlkshk readymade locavore vegan.</p>
+                </div>
+                <img alt="beauty shot"/>
               </li>
             </ul>
           </div>
@@ -77,12 +86,18 @@ export default function HomePage(props) {
           <div className='anti-twist'>
             <ul>
               <li>
-                <h5>Anthony Klein</h5>
-                <p>Blurb (Person can write their )</p>
+                <img alt="beauty shot"/>
+                <div className='member-text'>
+                  <h5>Anthony Klein - <em>Position</em></h5>
+                  <p>Af forage polaroid, bitters shoreditch raw denim bicycle rights chambray selfies. Marfa cray flannel, cloud bread swag pickled meditation. VHS +1 letterpress chia gluten-free taiyaki. </p>
+                </div>
               </li>
               <li>
-                <h5>Kevin Gomez</h5>
-                <p>Blurb (Person can write their )</p>
+                <div className='member-text'>
+                  <h5>Kevin Gomez - <em>Position</em></h5>
+                  <p> Cold-pressed copper mug distillery etsy next level irony. Chambray letterpress stumptown, post-ironic four dollar toast gochujang XOXO schlitz banjo poke ethical knausgaard. </p>
+                </div>
+                <img alt="beauty shot"/>
               </li>
             </ul>
           </div>
