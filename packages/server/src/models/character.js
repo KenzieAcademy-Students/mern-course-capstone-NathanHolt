@@ -13,7 +13,7 @@ const characterSchema = new mongoose.Schema([
       maxLength: 120,
     },
     color: {
-      type: string,
+      type: String,
     },
     paths: [
       {
