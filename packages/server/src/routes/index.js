@@ -1,5 +1,6 @@
 import express from 'express'
 import { User } from '../models'
+import signupRouter from  "./signup"
 
 const router = express.Router()
 
@@ -20,5 +21,5 @@ router.get('/sample', async (req, res, next) => {
 
   res.status(200).send(user)
 })
-
+router.use('/signup', signupRouter)
 module.exports = router
