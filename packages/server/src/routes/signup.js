@@ -5,7 +5,7 @@ import keys from '../config/keys'
 import jwt from 'jsonwebtoken'
 const router = express.Router();
 
-router.router("/").get((req, res, next) => {
+router.get("/" ,async(req, res, next) => {
   res.send("this is the signin endpoint");
 });
 
