@@ -12,7 +12,7 @@ export default function LogOutBtn() {
     
     return (
         <div>
-            <Button variant="outline-danger">Log Out</Button>
+            <Button onClick={() => handleClick()} variant="outline-danger">Log Out</Button>
         </div>
     )
 }
