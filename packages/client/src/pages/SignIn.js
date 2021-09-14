@@ -8,6 +8,11 @@ export default function SignIn() {
          
        </SignInLogic>
     </div>
+    <div>
+      sighn up page here!
+      <button id ='signup'>
+      </button>
+    </div>
     </>
   );
 }
