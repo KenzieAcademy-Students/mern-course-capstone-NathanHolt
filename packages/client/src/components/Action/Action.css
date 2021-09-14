@@ -1,0 +1,35 @@
+
+.action {
+    min-width: 200px;
+    max-width: 100%;
+    height: 100px;
+    margin: 4px;
+    padding: 6px;
+    border-radius: 10px;
+    background: rgb(1, 1, 146);
+    color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.2s;
+    border: 1px solid rgb(105, 105, 197);
+    box-shadow: 1px 1px 5px rgb(2, 2, 95);
+}
+
+.action:hover {
+    height: 300px;
+    background: rgb(17, 17, 202);
+    cursor: pointer;
+}
+
+.title {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.desc {
+    overflow: hidden;
+    max-width: 100%;
+    word-wrap: break-word;
+    text-overflow: ellipsis;
+}
