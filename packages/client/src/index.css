@@ -38,7 +38,7 @@ html {
   margin: 20px auto;
   padding: 20px 60px;
   border-radius: 30px;
-  background: rgba(236, 255, 255, 0.8);
+  background: rgba(202, 222, 230, 0.8);
   overflow-x: hidden;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.8),
               1px -1px 0 rgba(255, 255, 255, 1);
@@ -58,17 +58,17 @@ html {
 .section {
   padding: 60px 200px;
   border-radius: 10px;
-  background: rgba(236, 255, 255);
+  background: rgb(222, 245, 255);
   transform: rotate(4deg);
-  width: 115%;
+  width: 120%;
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
 }
 
-.info {
-  transform: rotate(-4deg);
+.intro * {
+  margin: 30px 0;
 }
 
-.anti-about {
+.anti {
   transform: rotate(-4deg);
 }
 
@@ -82,8 +82,20 @@ html {
 
 .feature {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   margin: 10px;
+}
+
+.feature > img {
+  width: 20%;
+  height: 180px;
+  width: 320px;
+  background: #283a4e;
+  border-radius: 10px;
+}
+
+.feature > p {
+  width: 50%;
 }
 
 ul {
