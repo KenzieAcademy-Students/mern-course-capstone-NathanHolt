@@ -35,7 +35,7 @@ html {
   flex-direction: column;
   justify-content: space-evenly;
   width: 75vw;
-  margin: 20px auto;
+  margin: 10px auto;
   padding: 20px 60px;
   border-radius: 30px;
   background: rgba(202, 222, 230, 0.8);
@@ -48,7 +48,7 @@ html {
   padding: 60px;
   border-radius: 20px;
   width: 90%;
-  margin: 20px auto;
+  margin: 10px auto;
   overflow: hidden;
   display: flex;
   flex-direction: column;
