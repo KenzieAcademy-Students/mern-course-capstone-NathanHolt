@@ -22,18 +22,16 @@ router.get("/" ,async(req, res, next) => {
 
 router.post('/', async (request, response, next) => {
   
-  const { name,author,characters } = request.body
-  const { user } = request
-User.findOne({ username: author }).then((save)=>{
-
+  const { name,author,characters } = request.body;
+  const { user } = request;
+  const currentuser = User.findOne({ username: author })
 
   const story = new Story({
     name,
-    author: save._id,
+    author: currentuser._id,
     characters:characters,
     created: Date.now(),
   })
-})
   try {
     const savedStory = await story.save()
     user.storyboard = user.storyboard.concat(savedStory._id)
