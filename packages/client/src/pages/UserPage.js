@@ -10,7 +10,7 @@ export default function UserPage() {
   return (
     <div className="user-page">
 
-      <UserHeader />
+      <UserHeader displayer={(value) => setDisplay(value)} />
 
         <div className="body">
 
