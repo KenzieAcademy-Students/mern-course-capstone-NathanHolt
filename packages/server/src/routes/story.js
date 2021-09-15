@@ -22,7 +22,7 @@ router.get("/" ,async(req, res, next) => {
 
 router.post('/', async (request, response, next) => {
   
-  const { name,author,characters } = request.body;
+  const { name,author,characters,} = request.body;
   const { user } = request;
   const currentuser = User.findOne({ username: author })
 
@@ -31,6 +31,7 @@ router.post('/', async (request, response, next) => {
     author: currentuser._id,
     characters:characters,
     created: Date.now(),
+    
   })
   try {
     const savedStory = await story.save()
