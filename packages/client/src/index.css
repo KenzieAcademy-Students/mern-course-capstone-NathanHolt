@@ -161,16 +161,6 @@ li * {
   margin: 10px auto;
 }
 
-.story {
-  height: 200px;
-  width: 80%;
-  margin: 10px;
-  border-radius: 20px;
-  border: 2px solid rgba(0, 0, 0, 0.8);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.8),
-              1px -1px 0 rgb(174, 193, 255);
-  background: rgb(222, 245, 255);
-}
 
 
 .action-test {

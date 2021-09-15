@@ -1,25 +1,25 @@
 import React, { useState } from 'react'
-import LogOutBtn from 'components/LogOutBtn'
+import Story from 'components/Story'
+import UserHeader from 'components/UserHeader'
 
 export default function UserPage() {
   const [display, setDisplay] = useState ('story')
   
   return (
     <div className="user-page">
-        <div className="header">
-          <LogOutBtn />
-        </div>
+
+      <UserHeader />
+
         <div className="body">
 
           {display === 'story' && <div>
             <h1>Stories</h1>
             <div className="stories">
-              <div className="story"></div>
-              <div className="story"></div>
-              <div className="story"></div>
-              <div className="story"></div>
-              <div className="story"></div>
-              <div className="story"></div>
+              <Story />
+              <Story />
+              <Story />
+              <Story />
+              <Story />
             </div>
           </div>}
 
