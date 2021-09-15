@@ -8,12 +8,12 @@ const characterSchema = new mongoose.Schema([
       required: true,
       maxlength: 30,
     },
-    text: {
+    description: {
       type: String,
       maxLength: 120,
     },
     color: {
-      type: string,
+      type: String,
     },
     paths: [
       {
