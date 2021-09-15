@@ -30,6 +30,8 @@ html {
   height: 100%;
 }
 
+/* homepage */
+
 .home {
   display: flex;
   flex-direction: column;
@@ -124,6 +126,33 @@ li  img {
 li * {
   margin: 20px;
 }
+
+
+/* UserPage */
+
+.user-page {
+  overflow-x: hidden;
+  position: relative;
+}
+
+.body {
+  width: 70%;
+  margin: 150px auto;
+  background:rgb(141, 193, 209);
+  border-radius: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.8),
+              1px -1px 0 rgba(253, 181, 255, 0.822);
+}
+
+.stories {
+  padding: 20px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px auto;
+}
+
 
 
 .action-test {
