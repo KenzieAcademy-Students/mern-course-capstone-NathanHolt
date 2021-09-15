@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import Story from 'components/Story'
 import UserHeader from 'components/UserHeader'
+import StoryForm from 'components/StoryForm'
+import UserEditor from 'components/UserEditor'
 
 export default function UserPage() {
   const [display, setDisplay] = useState ('story')
@@ -24,17 +26,11 @@ export default function UserPage() {
           </div>}
 
           {display === 'story-form' && <div>
-            <h1>Create a new Story</h1>
-            <div className="stories">
-              <div className="story"></div>
-            </div>
+            <StoryForm />
           </div>}
 
           {display === 'user' && <div>
-            <h1>Edit your profile</h1>
-            <div className="stories">
-              <div className="story"></div>
-            </div>
+            <UserEditor />
           </div>}
 
         </div>
