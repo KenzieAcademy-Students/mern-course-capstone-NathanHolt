@@ -15,13 +15,13 @@ export default function SignInLogic() {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    // let res = await axios.post('/api/signup/signin', {
-    //   username: username,
-    //   password: password,
-    // })
-    // console.log(res)
-    // localStorage.setItem("user", username)
-    // history.push(`/user/${username}`)
+    let res = await axios.post('/api/signup/signin', {
+      username: username,
+      password: password,
+    })
+    console.log(res)
+    localStorage.setItem("user", username)
+    history.push(`/user/${username}`)
   }
   return (
     <div className='Login'>
