@@ -12,9 +12,9 @@ export default function UserHeader(props) {
             logo
           </div>
           <div className="nav">
-            <Button onClick={() => displayer('story')}>Stories</Button> 
-            <Button onClick={() => displayer('story-form')}>Create new Story</Button> 
-            <Button onClick={() => displayer('user')}>Edit Account</Button> 
+            <Button variant="secondary" onClick={() => displayer('story')}>Stories</Button> 
+            <Button variant="outline-dark" onClick={() => displayer('story-form')}>Create new Story</Button> 
+            <Button variant="secondary" onClick={() => displayer('user')}>Edit Account</Button> 
           </div>
           <div className="log-out">
             <LogOutBtn />

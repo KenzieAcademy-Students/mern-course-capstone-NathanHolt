@@ -14,10 +14,16 @@
   height: 80px;
   width: 80px;
   border-radius: 50%;
+  border: 1px solid rgba(207, 207, 207, 0.8);
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.4)
 }
 
 .nav {
   margin: 0 100px;
+}
+
+.nav * {
+  margin: 4px;
 }
 
 .log-out {
