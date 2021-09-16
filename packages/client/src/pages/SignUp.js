@@ -18,7 +18,6 @@ export default function SignUp() {
   }
   async function handleSubmit(event) {
     event.preventDefault();
-    console.log(username, email, password)
     let res = await axios.post('/api/signup/signup', {
       username: username,
       password: password,
