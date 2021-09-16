@@ -4,4 +4,22 @@
     background:rgba(91, 149, 214, 0.9);
     position: fixed;
     box-shadow: 0 1px 10px rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
   }
+
+.logo {
+  background: rgba(255, 255, 255, 0.2);
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+}
+
+.nav {
+  margin: 0 100px;
+}
+
+.log-out {
+  justify-self: end;
+}
