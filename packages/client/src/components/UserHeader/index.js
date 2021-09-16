@@ -6,7 +6,7 @@ export default function UserHeader(props) {
   const { displayer } = props
   
     return (
-        <div className="header">
+        <div className="header"> 
           <LogOutBtn />
         </div>
     )
