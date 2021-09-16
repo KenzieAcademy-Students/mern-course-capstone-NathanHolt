@@ -1,14 +1,14 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import HomePage from 'pages/HomePage'
-import SignIn from 'pages/SignIn'
-import StoryPage from 'pages/StoryPage'
-import UserPage from 'pages/UserPage'
-import TesterN from 'pages/TesterN'
-import './index.css'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import SignUp from 'pages/SignUp'
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import HomePage from "pages/HomePage";
+import SignIn from "pages/SignIn";
+import StoryPage from "pages/StoryPage";
+import UserPage from "pages/UserPage";
+import TesterN from "pages/TesterN";
+import "./index.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import SignUp from "pages/SignUp";
 
 ReactDOM.render(
   <React.StrictMode>

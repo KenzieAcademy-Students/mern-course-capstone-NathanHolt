@@ -7,9 +7,12 @@ export default function SignUp() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const history = useHistory();
 
   function validateForm() {
-    return email.length > 0 && password.length > 0;
+    if (email.length > 0 && password.length > 0 && username.length > 0) {
+      return true;
+    } else return false;
   }
   function handleSubmit(event) {
     event.preventDefault();
@@ -46,6 +49,11 @@ export default function SignUp() {
         <Button block size='lg' type='submit' disabled={!validateForm()}>
           Sign Up
         </Button>
+        <div>
+          <Button size='small' onClick={() => history.push("/log")}>
+            Already have an account?
+          </Button>
+        </div>
       </Form>
     </div>
   );
