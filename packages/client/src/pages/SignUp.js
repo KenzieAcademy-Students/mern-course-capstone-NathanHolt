@@ -2,20 +2,30 @@ import React, { useEffect, useState } from "react";
 import Form from "react-bootstrap/Form";
 import { useHistory } from "react-router-dom";
 import Button from "react-bootstrap/Button";
+import axios from 'axios';
 
 export default function SignUp() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [password2, setPassword2] = useState("");
   const history = useHistory();
 
   function validateForm() {
-    if (email.length > 0 && password.length > 0 && username.length > 0) {
+    if (email.length > 0 && password.length > 0 && username.length > 0 && password === password2) {
       return true;
     } else return false;
   }
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
+    console.log(username, email, password)
+    let res = await axios.post('/api/signup/signup', {
+      username: username,
+      password: password,
+      email: email,
+    })
+    localStorage.setItem("user", username)
+    history.push(`/user/${username}`)
   }
   return (
     <div>
@@ -44,6 +54,14 @@ export default function SignUp() {
             type='password'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+          />
+        </Form.Group>
+        <Form.Group size='lg' controlId='password'>
+          <Form.Label>Retype Password</Form.Label>
+          <Form.Control
+            type='password'
+            value={password2}
+            onChange={(e) => setPassword2(e.target.value)}
           />
         </Form.Group>
         <Button block size='lg' type='submit' disabled={!validateForm()}>
