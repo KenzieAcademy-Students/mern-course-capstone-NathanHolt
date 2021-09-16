@@ -5,7 +5,7 @@ import LoadingSpinner from 'components/LoadingSpinner'
 import Button from 'react-bootstrap/Button'
 
 export default function HomePage(props) {
-  const {error, isLoading, response} = useApiFetch("/sample")
+  // const {error, isLoading, response} = useApiFetch("/sample")
   const history = useHistory()
 
   useEffect(() => {
