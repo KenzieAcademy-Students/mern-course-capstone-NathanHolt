@@ -21,7 +21,6 @@ export default function UserPage() {
               <Story />
               <Story />
               <Story />
-              <Story />
             </div>
           </div>}
 
