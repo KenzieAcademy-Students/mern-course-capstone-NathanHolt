@@ -40,7 +40,7 @@ export default function SignInLogic() {
         </Button>
         <div>
           <Button size='small' onClick={() => history.push("/signup")}>
-            Sign Up
+            Don't have an account?
           </Button>
         </div>
       </Form>
