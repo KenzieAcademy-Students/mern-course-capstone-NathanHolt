@@ -5,7 +5,7 @@ export default function StoryPage() {
     return (
         <div className="story-page">
             <div className="story-header">
-                <h1>header</h1>
+                <h1>header</h1> 
                 <LogOutBtn />
             </div>
             <div className="story-body">
