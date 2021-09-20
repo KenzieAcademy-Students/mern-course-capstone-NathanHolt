@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button'
 import './Action.css'
 
 export default function Action(props) {
-    const { title, length, text, position, total } = props 
+    const { title, length, text, position } = props 
 
     const [show, setShow] = useState(false);
 
@@ -13,13 +13,14 @@ export default function Action(props) {
 
     const findPosition = () => {
         if (position === 0) return 0
-        let newPos = position - length
-        return newPos / total
+        let newPos = position - length 
+        if (newPos < 0) newPos = newPos * -1 
+        return newPos 
     }
     
     return (
         <>
-            <div style={{width: `${length}%`, marginLeft: `${findPosition()}%`}} className="action" onClick={() => handleShow()}>
+            <div style={{width: `${length}%`, left: `${findPosition()}%`}} className="action" onClick={() => handleShow()}>
                 <div className="title">
                     <h3>{title}</h3>
                 </div>
