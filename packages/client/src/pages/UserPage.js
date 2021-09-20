@@ -18,9 +18,9 @@ export default function UserPage() {
             <h1>Stories</h1>
             <div className="stories">
               <Story />
+              {/* <Story />
               <Story />
-              <Story />
-              <Story />
+              <Story /> */}
             </div>
           </div>}
 
