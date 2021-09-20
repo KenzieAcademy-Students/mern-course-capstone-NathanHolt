@@ -2,6 +2,7 @@ import express from 'express'
 import { User } from '../models'
 import signupRouter from  "./signup"
 import storyRouter from "./story"
+import userrouter from "./user"
 const router = express.Router()
 
 router.get("/" ,async(req, res, next) => {
@@ -24,4 +25,5 @@ router.get('/sample', async (req, res, next) => {
 })
 router.use('/signup', signupRouter)
 router.use('/story', storyRouter)
+router.use('/user',userrouter)
 module.exports = router
