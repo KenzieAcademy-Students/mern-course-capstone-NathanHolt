@@ -20,7 +20,7 @@ export default function StoryHeader(props) {
             <Logo />
           <div className="nav">
             <Button variant="secondary" onClick={() => history.push(`/user/${user}`)}>See all Stories</Button> 
-            <Button variant="outline-dark" onClick={() => displayer('story-form')}>Create new Story</Button> 
+            <Button variant="outline-dark" onClick={() => displayer('new')}>Create new Story</Button> 
             <Button variant="outline-danger" onClick={() => displayer('delete')}>Delete Story</Button>
           </div>
           <div className="log-out">
