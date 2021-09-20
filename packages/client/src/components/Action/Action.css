@@ -1,6 +1,6 @@
 
 .action {
-    min-width: 200px;
+    /* min-width: 200px; */
     max-width: 100%;
     height: 100px;
     margin: 4px;
@@ -19,7 +19,6 @@
     background: rgb(17, 17, 202);
     cursor: pointer;
 }
-
 
 .title {
     display: flex;

@@ -8,7 +8,8 @@ export default function TesterN() {
     const renderActions = (num) => {
         let acts = []
         for (let i = 0; i < num; i++) {
-            acts.push(<Action title="Tester"  length='2min' text="I'm baby jean shorts asymmetrical lo-fi, flexitarian hashtag copper mug PBRB umami wolf unicorn aesthetic forage tofu chia. Selfies lumbersexual whatever roof party slow-carb. Poutine unicorn taiyaki, ennui locavore cliche live-edge. Hammock copper mug beard food truck." />)
+            let unit = 100 / (num * 2) // length of the story
+            acts.push(<Action total={num} position={unit * (i * 1.5)} title="Tester"  length={unit} text="I'm baby jean shorts asymmetrical lo-fi, flexitarian hashtag copper mug PBRB umami wolf unicorn aesthetic forage tofu chia. Selfies lumbersexual whatever roof party slow-carb. Poutine unicorn taiyaki, ennui locavore cliche live-edge. Hammock copper mug beard food truck." />)
         }
         return acts
     }

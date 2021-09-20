@@ -236,4 +236,5 @@ li * {
 
 .action-test {
   display: flex;
+  width: 100%;
 }
