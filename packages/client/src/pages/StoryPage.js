@@ -1,12 +1,13 @@
-import React from 'react'
-import LogOutBtn from 'components/LogOutBtn'
+import React, { useState } from 'react'
+import StoryHeader from 'components/StoryHeader'
 
 export default function StoryPage() {
+    const [question, setQuestion] = useState ('')
+    
     return (
         <div className="story-page">
             <div className="story-header">
-                <h1>header</h1>
-                <LogOutBtn />
+                <StoryHeader displayer={(e) => setQuestion(e)} />
             </div>
             <div className="story-body">
                 <div className="story-sidebar">sidebar to add/manipulate characters</div>
