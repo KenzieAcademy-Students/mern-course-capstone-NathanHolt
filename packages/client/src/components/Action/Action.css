@@ -14,6 +14,7 @@
     transition: all 0.2s;
     border: 2px solid rgb(132, 132, 231);
     box-shadow: 1px 1px 5px rgb(2, 2, 95);
+    overflow: hidden;
 }
 
 .action:hover {
