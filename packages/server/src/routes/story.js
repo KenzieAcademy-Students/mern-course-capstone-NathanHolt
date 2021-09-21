@@ -5,7 +5,8 @@ const router = express.Router();
 
 
 router.get("/" ,async(req, res, next) => {
-  res.send("this is the story endpoint");
+  
+  res.json("this is the story endpoint");
 });
 
 // router.post("/create",async (req,res ,next)=>{
@@ -44,6 +45,50 @@ router.post('/', async (request, response, next) => {
     next(error)
   }
 })
+
+
+router.post('/character,',  async (request, response, next) =>{
+  const {name,description,color,story_Id}= request.body
+  const { user } = request;
+  
+
+  const charater = new Charater({
+    name: name,
+    description: description,
+    color: color
+
+  })
+
+
+  try {
+    const savedCharater = await charater.save()
+    user.characterboard = user.characterboard.concat(savedCharater._id)
+    
+  Story.findOneAndUpdate(
+    story_Id, 
+    {
+      $push: { characters: charater },
+    },
+    {
+      new: true,
+    }
+  )
+    await user.save()
+
+    response.json(savedCharater.toJSON())
+  } catch (error) {
+    next(error)
+  }
+})
+
+
+
+
+
+
+
+
+
 
   
 

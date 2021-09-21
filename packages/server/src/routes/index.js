@@ -5,9 +5,9 @@ import storyRouter from "./story"
 import userrouter from "./user"
 const router = express.Router()
 
-router.get("/" ,async(req, res, next) => {
-  res.send("this is the story endpoint");
-});
+// router.get("/" ,async(req, res, next) => {
+//   res.send("this is the  endpoint");
+// });
 
 
 router.get('/sample', async (req, res, next) => {
