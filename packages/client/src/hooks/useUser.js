@@ -1,6 +1,25 @@
 import React, { createContext, useContext, useReducer, useMemo } from 'react'
 
-const initialState = {}
+const initialState = {
+    name: '',
+    author: '',
+    created: 0,
+    characters: [
+        {
+            name: '',
+            description: '',
+            color: '',
+            paths: [
+                {
+                    name: '',
+                    description: '',
+                    start: 0,
+                    end: 0,
+                },
+            ]
+        },
+    ],
+}
 
 export const UserContext = createContext(initialState)
 
@@ -8,7 +27,15 @@ UserContext.displayName = 'UserContext'
 
 const UserReducer = (state, action) => {
     switch (action.type) {
+        case 'INITIAL_SET':
+            console.log('loading')
+            localStorage.setItem("test", "save")  
+            return {
+                ...state,
+            }
         case 'ADD_CHARACTER':
+            console.log(state)
+            console.log(action.payload)
             return {
                 ...state,
             }
@@ -40,6 +67,10 @@ const UserReducer = (state, action) => {
 export const UserProvider = (props) => {
     const [state, dispatch] = useReducer(UserReducer, initialState)
 
+    const initialSet = (payload) => {
+        dispatch({ type: 'INITIAL_SET', payload: payload})
+    }
+
     const addCharacter = (payload) => {
         dispatch({ type: 'ADD_CHARACTER', payload: payload})
     }
@@ -65,12 +96,14 @@ export const UserProvider = (props) => {
     }
 
     const saveProgress = () => {
-        console.log('save')
+        localStorage.setItem("test", "")  
+        // axios call to save a story goes here
     }
 
     const value = useMemo(
         () => ({
             ...state,
+            initialSet,
             addCharacter,
             deleteCharacter,
             editCharacter,
