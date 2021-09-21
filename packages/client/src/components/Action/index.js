@@ -11,16 +11,16 @@ export default function Action(props) {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const findPosition = () => {
-        if (position === 0) return 0
-        let newPos = position - length 
-        if (newPos < 0) newPos = newPos * -1 
-        return newPos 
-    }
+    // const findPosition = () => {
+    //     if (position === 0) return 0
+    //     let newPos = position - length 
+    //     if (newPos < 0) newPos = newPos * -1 
+    //     return newPos 
+    // }
     
     return (
         <>
-            <div style={{width: `${length}%`, left: `${findPosition()}%`}} className="action" onClick={() => handleShow()}>
+            <div style={{width: `${length}%`, left: `${position}%`}} className="action" onClick={() => handleShow()}>
                 <div className="title">
                     <h3>{title}</h3>
                 </div>
