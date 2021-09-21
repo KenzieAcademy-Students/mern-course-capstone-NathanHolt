@@ -2,6 +2,8 @@ import LogOutBtn from 'components/LogOutBtn'
 import Sidebar from 'components/StoryPageSideBar'
 import React, { useState } from 'react'
 import StoryHeader from 'components/StoryHeader'
+import Character from 'components/Character'
+
 
 
 export default function StoryPage() {
@@ -16,9 +18,9 @@ export default function StoryPage() {
                 <div className="story-sidebar"><Sidebar></Sidebar></div>
                 <div className="story-main">
                     <div className="story-line">timeline</div>
-                    <div className="story-character"></div>
-                    <div className="story-character"></div>
-                    <div className="story-character"></div>
+                    <Character test={5} />
+                    <Character test={8} />
+                    <Character test={3} />
                 </div>
             </div>
         </div>

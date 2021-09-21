@@ -234,6 +234,9 @@ li * {
   margin-top: 5px;
 }
 
-.action-test {
+
+
+.test-row {
   display: flex;
+  flex-direction: column;
 }

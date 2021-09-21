@@ -1,27 +1,26 @@
 
 .action {
-    min-width: 200px;
+    /* min-width: 200px; */
     max-width: 100%;
     height: 100px;
+    position: absolute;
     margin: 4px;
     padding: 6px;
     border-radius: 10px;
-    background: rgb(1, 1, 146);
+    background: rgb(28, 28, 112);
     color: aliceblue;
     display: flex;
     flex-direction: column;
     transition: all 0.2s;
-    border: 1px solid rgb(105, 105, 197);
+    border: 2px solid rgb(132, 132, 231);
     box-shadow: 1px 1px 5px rgb(2, 2, 95);
+    overflow: hidden;
 }
 
 .action:hover {
     background: rgb(17, 17, 202);
     cursor: pointer;
-}
-
-.action:active {
-    height: 300px;
+    z-index: 99;
 }
 
 .title {
