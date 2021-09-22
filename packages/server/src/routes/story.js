@@ -1,15 +1,16 @@
 import express from "express";
-import { Story } from "../models";
-import {User } from "../models"
+import { Story, User } from "../models";
+import { requireAuth } from '../middleware'
+import chalk from 'chalk'
 const router = express.Router();
 
 
 router.get("/" ,async(req, res, next) => {
   
-  res.json("this is the story endpoint");
-});
+  res.send("this is the story endpoint");
+ });
 
-// router.post("/create",async (req,res ,next)=>{
+// router.post("/",async (req,res ,next)=>{
 // const {name,author,characters,}=req.body
 
 
@@ -17,37 +18,82 @@ router.get("/" ,async(req, res, next) => {
 // const story = new Story({
 //   name,
 //   author:save._id,
-//   characters,
-//   created: Date.now()
+//   // characters,
+//   // created: Date.now()
 // });
 
-router.post('/', async (request, response, next) => {
-  
-  const { name,author,characters,} = request.body;
+router.post('/', requireAuth, async (request, response, next) => {
+  console.log(chalk.red('running one'))
+  const { name } = request.body;
   const { user } = request;
-  const currentuser = User.findOne({ username: author })
+  const currentUser = await User.findById(user._id)
+  console.log(chalk.red(name))
+  console.log(chalk.red(user._id))
 
   const story = new Story({
-    name,
-    author: currentuser._id,
-    characters:characters,
-    created: Date.now(),
-    
+    name: name,
+    author: user._id ,
+   
+    //  characters:characters,   
   })
+  console.log(chalk.yellow(currentUser))
+  console.log(chalk.yellow(currentUser.storyboard))
   try {
     const savedStory = await story.save()
-    user.storyboard = user.storyboard.concat(savedStory._id)
 
-    await user.save()
+    const updateUser = await User.findByIdAndUpdate(
+      {
+        _id: currentUser._id
+      },
+      {
+        $push: {storyboard: savedStory._id}
+      },
+      {
+        new: true
+      }
+    )
 
-    response.json(savedStory.toJSON())
+    console.log(chalk.yellow(updateUser))
+    response.send({story: savedStory})
+
+    // if (typeof currentUser.storyboard === 'undefined') {
+    //   const updateUser = await User.findByIdAndUpdate(
+    //     {
+    //       _id: currentUser._id
+    //     },
+    //     {
+    //       storyboard: [savedStory._id]
+    //     },
+    //     {
+    //       new: true
+    //     }
+    //   )
+    //   let savedUser = await updateUser.save()
+  
+    //   response.send({story: savedStory, user: savedUser})
+    // } else {
+    //   const updateUser = await User.findByIdAndUpdate(
+    //     {
+    //       _id: currentUser._id
+    //     },
+    //     {
+    //       storyboard: [...storyboard, savedStory._id]
+    //     },
+    //     {
+    //       new: true
+    //     }
+    //   )
+    //   let savedUser = await updateUser.save()
+  
+    //   response.send({story: savedStory, user: savedUser})
+    // }
   } catch (error) {
     next(error)
   }
 })
 
 
-router.post('/character,',  async (request, response, next) =>{
+router.post('/character',  async (request, response, next) =>{
   const {name,description,color,story_Id}= request.body
   const { user } = request;
   
@@ -56,7 +102,7 @@ router.post('/character,',  async (request, response, next) =>{
     name: name,
     description: description,
     color: color
-
+      
   })
 
 
@@ -82,6 +128,31 @@ router.post('/character,',  async (request, response, next) =>{
 })
 
 
+router.delete('/:character', async (request, response, next) => {
+  const { user } = request
+  const { id } = request.params
+  const charater  = await charater.findById(id)
+  console.log(charater)
+
+  if (!charater) {
+    return response.status(422).json({ error: 'Cannot find charater ' })
+  }
+  console.log(typeof user,user)
+  if (charater.author._id.toString() === user._id.toString()) {
+    try {
+      const removedCharater = await post.remove()
+
+      const userUpdate = await User.updateOne(
+        { _id: user._id },
+        { $pull: { posts: id } }
+      )
+
+      response.json(removedCharater)
+    } catch (err) {
+      next(err)
+    }
+  }
+})
 
 
 
