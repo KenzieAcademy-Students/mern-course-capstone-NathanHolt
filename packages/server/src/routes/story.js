@@ -10,17 +10,6 @@ router.get("/" ,async(req, res, next) => {
   res.send("this is the story endpoint");
  });
 
-// router.post("/",async (req,res ,next)=>{
-// const {name,author,characters,}=req.body
-
-
-// save._id
-// const story = new Story({
-//   name,
-//   author:save._id,
-//   // characters,
-//   // created: Date.now()
-// });
 
 router.post('/', requireAuth, async (request, response, next) => {
   console.log(chalk.red('running one'))
@@ -55,38 +44,7 @@ router.post('/', requireAuth, async (request, response, next) => {
 
     console.log(chalk.yellow(updateUser))
     response.send({story: savedStory})
-
-    // if (typeof currentUser.storyboard === 'undefined') {
-    //   const updateUser = await User.findByIdAndUpdate(
-    //     {
-    //       _id: currentUser._id
-    //     },
-    //     {
-    //       storyboard: [savedStory._id]
-    //     },
-    //     {
-    //       new: true
-    //     }
-    //   )
-    //   let savedUser = await updateUser.save()
-  
-    //   response.send({story: savedStory, user: savedUser})
-    // } else {
-    //   const updateUser = await User.findByIdAndUpdate(
-    //     {
-    //       _id: currentUser._id
-    //     },
-    //     {
-    //       storyboard: [...storyboard, savedStory._id]
-    //     },
-    //     {
-    //       new: true
-    //     }
-    //   )
-    //   let savedUser = await updateUser.save()
-  
-    //   response.send({story: savedStory, user: savedUser})
-    // }
+git
   } catch (error) {
     next(error)
   }
