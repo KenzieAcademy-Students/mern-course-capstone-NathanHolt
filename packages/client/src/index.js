@@ -6,12 +6,14 @@ import SignIn from "pages/SignIn";
 import StoryPage from "pages/StoryPage";
 import UserPage from "pages/UserPage";
 import TesterN from "pages/TesterN";
+import { ManagedUserContext } from 'hooks/useUser'
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import SignUp from "pages/SignUp";
 
 ReactDOM.render(
   <React.StrictMode>
+    <ManagedUserContext>
     <BrowserRouter>
       <div className='app'>
         <Switch>
@@ -24,6 +26,7 @@ ReactDOM.render(
         </Switch>
       </div>
     </BrowserRouter>
+    </ManagedUserContext>
   </React.StrictMode>,
   document.getElementById("root")
 );
