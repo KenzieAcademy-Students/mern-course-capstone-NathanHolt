@@ -44,7 +44,7 @@ router.post('/', requireAuth, async (request, response, next) => {
 
     console.log(chalk.yellow(updateUser))
     response.send({story: savedStory})
-git
+
   } catch (error) {
     next(error)
   }
