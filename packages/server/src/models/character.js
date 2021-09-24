@@ -6,14 +6,15 @@ const characterSchema = new mongoose.Schema([
     name: {
       type: String,
       required: true,
-      maxlength: 30,
+      maxlength: 40,
     },
     description: {
       type: String,
-      maxLength: 120,
+      maxLength: 500,
     },
     color: {
       type: String,
+      maxlength: 30,
     },
     paths: [
       {
