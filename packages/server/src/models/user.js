@@ -19,9 +19,16 @@ const userSchema = new mongoose.Schema(
       unique: true,
       required: true,
     },
-  ],
-  
-})
+
+    storyboard: [
+      {
+        type: ObjectId,
+        ref: 'Story',
+      },
+    ],
+  },
+  { timestamps: true }
+)
 
 const User = mongoose.model('User', userSchema)
 
