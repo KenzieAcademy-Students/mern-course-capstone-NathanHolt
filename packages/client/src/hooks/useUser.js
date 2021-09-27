@@ -67,26 +67,30 @@ const UserReducer = (state, action) => {
             const { name } = action.payload
 
             // Find the right character and delete it
+            let delCharIndex = findChar(name)
+            let delCharState = state.characters.splice(1, delCharIndex)
 
             return {
-                ...state,
+                delCharState,
             }
         case 'EDIT_CHARACTER':
             const { name, description, color } = action.payload
 
             // Find the right path and save it
+            let editCharIndex = findChar(name)
 
             let editChar = {
-                name: name ? name : oldName,
-                description: description ? description : oldDescription,
-                color: color ? color : oldColor,
-                paths: oldPaths,
+                name: name ? name : state.characters[editCharIndex].name,
+                description: description ? description : state.characters[editCharIndex].description,
+                color: color ? color : state.characters[editCharIndex].color,
+                paths: state.characters[editCharIndex].paths,
             }
 
             // replace editChar with existing character
+            let editCharState = state.characters.splice(1, editCharIndex, editChar)
 
             return {
-                ...state,
+                editCharState,
             }
         case 'ADD_PATH':
             const { character, name, description, start, end } = action.payload
