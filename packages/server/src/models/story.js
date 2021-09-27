@@ -7,15 +7,11 @@ const storySchema = new mongoose.Schema(
       type: String,
       required: true,
       unique: true,
-      maxlength: 120,
+      maxlength: 75,
     },
     author: {
       type: ObjectId,
       ref: 'User',
-    },
-    created: {
-      type: Date,
-      default: Date.now,
     },
     characters: [
       {
