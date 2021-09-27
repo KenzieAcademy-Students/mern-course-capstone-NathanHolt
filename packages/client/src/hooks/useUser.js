@@ -35,10 +35,20 @@ const findChar = (name) => {
     if (!result) {
         return "Character not found"
     }
+    return result;
 }
 
-const findPath = () => {
-
+const findPath = (name, char) => {
+    let result
+    for (let i = 0; i < state.characters[char].paths.length; i++) {
+        if (state.characters[char].paths[i].name === name) {
+            result = i;
+        }
+    }
+    if (!result) {
+        return "Character not found"
+    }
+    return result;
 }
 
 const UserReducer = (state, action) => {
@@ -95,6 +105,8 @@ const UserReducer = (state, action) => {
         case 'ADD_PATH':
             const { character, name, description, start, end } = action.payload
 
+            const addPathChar = findChar(character)
+
             let newPath = {
                 name: name,
                 description: description,
@@ -102,7 +114,7 @@ const UserReducer = (state, action) => {
                 end: end,
             }
 
-            //state.characters.push(newPath)
+            state.characters[addPathChar].paths.push(newPath)
 
             return {
                 ...state,
@@ -110,27 +122,33 @@ const UserReducer = (state, action) => {
         case 'DELETE_PATH':
             const { character, name } = action.payload
 
+            const delPathChar = findChar(character)
+
             // Find the right path and delete it
+            let delPathState = state.characters[delPathChar].paths.splice(1, delCharIndex)
 
             return {
-                ...state,
+                delCharState,
             }
         case 'EDIT_PATH':
             const { character, name, description, start, end } = action.payload
 
             // Find the right path and save it
+            const editPathChar = findChar(character)
+            const pathToEditIndex = findPath(name, editPathChar)
 
             let editPath = {
-                name: name ? name : oldName,
-                description: description ? description : oldDescription,
-                start: start ? start : newStart,
-                end: end ? end : newEnd,
+                name: name ? name : state.characters[editPathChar].paths[pathToEditIndex].name,
+                description: description ? description : state.characters[editPathChar].paths[pathToEditIndex].description,
+                start: start ? start : state.characters[editPathChar].paths[pathToEditIndex].start,
+                end: end ? end : state.characters[editPathChar].paths[pathToEditIndex].end,
             }
 
             // replace editPath with the old path
+            let editPathState = state.characters[editPathChar].paths[pathToEditIndex].splice(1, pathToEditIndex, editPath)
 
             return {
-                ...state,
+                editPathState,
             }
         default: 
             return state
