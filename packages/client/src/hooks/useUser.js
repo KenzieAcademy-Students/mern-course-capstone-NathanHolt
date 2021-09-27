@@ -4,21 +4,7 @@ const initialState = {
     name: '',
     author: '',
     created: 0,
-    characters: [
-        // {
-        //     name: '',
-        //     description: '',
-        //     color: '',
-        //     paths: [
-        //         {
-        //             name: '',
-        //             description: '',
-        //             start: 0,
-        //             end: 0,
-        //         },
-        //     ]
-        // },
-    ],
+    characters: [],
 }
 
 export const UserContext = createContext(initialState)
@@ -54,11 +40,10 @@ const findPath = (name, char) => {
 const UserReducer = (state, action) => {
     switch (action.type) {
         case 'INITIAL_SET':
-            console.log('loading')
-            localStorage.setItem("test", "save")  
+            const initialState = action.payload
 
             return {
-                ...state,
+                initialState,
             }
         case 'ADD_CHARACTER':
             const { name, description, color } = action.payload
@@ -187,7 +172,6 @@ export const UserProvider = (props) => {
     }
 
     const saveProgress = () => {
-        localStorage.setItem("test", "")  
         // axios call to save a story goes here
     }
 
