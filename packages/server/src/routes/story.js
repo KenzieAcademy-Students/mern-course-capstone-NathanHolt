@@ -44,7 +44,7 @@ router.post('/', requireAuth, async (request, response, next) => {
 
     console.log(chalk.yellow(updateUser))
     response.send({story: savedStory})
-git
+
   } catch (error) {
     next(error)
   }
@@ -56,7 +56,7 @@ router.post('/character',  async (request, response, next) =>{
   const { user } = request;
   
 
-  const charater = new Character({
+  const character = new Character({
     name: name,
     description: description,
     color: color
@@ -98,7 +98,7 @@ router.delete('/:character', async (request, response, next) => {
   console.log(typeof user,user)
   if (character.author._id.toString() === user._id.toString()) {
     try {
-      const removedCharacter = await post.remove()
+      const removedCharacter = await story.remove()
 
       const userUpdate = await User.updateOne(
         { _id: user._id },
