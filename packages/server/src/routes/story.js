@@ -1,5 +1,5 @@
 import express from "express";
-import { Story, User } from "../models";
+import { Character, Story, User } from "../models";
 import { requireAuth } from '../middleware'
 import chalk from 'chalk'
 const router = express.Router();
@@ -56,7 +56,7 @@ router.post('/character',  async (request, response, next) =>{
   const { user } = request;
   
 
-  const charater = new Charater({
+  const charater = new Character({
     name: name,
     description: description,
     color: color
@@ -65,13 +65,13 @@ router.post('/character',  async (request, response, next) =>{
 
 
   try {
-    const savedCharater = await charater.save()
-    user.characterboard = user.characterboard.concat(savedCharater._id)
+    const savedCharcter = await charater.save()
+    user.characterboard = user.characterboard.concat(savedCharcter._id)
     
   Story.findOneAndUpdate(
     story_Id, 
     {
-      $push: { characters: charater },
+      $push: { characters: Character },
     },
     {
       new: true,
@@ -89,23 +89,23 @@ router.post('/character',  async (request, response, next) =>{
 router.delete('/:character', async (request, response, next) => {
   const { user } = request
   const { id } = request.params
-  const charater  = await charater.findById(id)
-  console.log(charater)
+  const character  = await character.findById(id)
+  console.log(character)
 
-  if (!charater) {
+  if (!character) {
     return response.status(422).json({ error: 'Cannot find charater ' })
   }
   console.log(typeof user,user)
-  if (charater.author._id.toString() === user._id.toString()) {
+  if (character.author._id.toString() === user._id.toString()) {
     try {
-      const removedCharater = await post.remove()
+      const removedCharacter = await post.remove()
 
       const userUpdate = await User.updateOne(
         { _id: user._id },
         { $pull: { posts: id } }
       )
 
-      response.json(removedCharater)
+      response.json(removedCharacter)
     } catch (err) {
       next(err)
     }
