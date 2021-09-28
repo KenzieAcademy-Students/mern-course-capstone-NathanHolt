@@ -1,28 +1,26 @@
-import React, { useState } from "react";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import { useHistory } from "react-router-dom";
-import axios from 'axios';
+import React, { useState } from 'react'
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
+import { useHistory } from 'react-router-dom'
+import axios from 'axios'
 import './SignIn.css'
 
-
 export default function SignInLogic() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const history = useHistory();
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const history = useHistory()
 
   function validateForm() {
-    return username.length > 0 && password.length > 0;
+    return username.length > 0 && password.length > 0
   }
 
   async function handleSubmit(event) {
-    event.preventDefault();
+    event.preventDefault()
     let res = await axios.post('/api/signup/signin', {
       username: username,
       password: password,
     })
-    console.log(res)
-    localStorage.setItem("user", username)
+    localStorage.setItem('user', JSON.stringify(res))
     history.push(`/user/${username}`)
   }
   return (
@@ -50,12 +48,12 @@ export default function SignInLogic() {
             Login
           </Button>
           <div>
-            <Button size='small' onClick={() => history.push("/signup")}>
+            <Button size='small' onClick={() => history.push('/signup')}>
               Don't have an account?
             </Button>
           </div>
         </Form>
       </div>
     </div>
-  );
+  )
 }
