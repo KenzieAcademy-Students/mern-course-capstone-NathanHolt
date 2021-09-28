@@ -1,25 +1,35 @@
-import mongoose from "mongoose";
-const { ObjectId } = mongoose.Schema.Types;
+import mongoose from 'mongoose'
+const { ObjectId } = mongoose.Schema.Types
 
-const userSchema = new mongoose.Schema({
-  username: {
-    type: String,
-    unique: true,
-    required: true,
+const userSchema = new mongoose.Schema(
+  {
+    username: {
+      type: String,
+      unique: true,
+      required: true,
+    },
+
+    passwordHash: {
+      type: String,
+      required: true,
+    },
+
+    email: {
+      type: String,
+      unique: true,
+      required: true,
+    },
+
+    storyboard: [
+      {
+        type: ObjectId,
+        ref: 'Story',
+      },
+    ],
   },
+  { timestamps: true }
+)
 
-  passwordHash: {
-    type: String,
-    required: true,
-  },
+const User = mongoose.model('User', userSchema)
 
-  email: {
-    type: String,
-    unique: true,
-    required: true,
-  },
-});
-
-const User = mongoose.model("User", userSchema);
-
-export default User;
+export default User

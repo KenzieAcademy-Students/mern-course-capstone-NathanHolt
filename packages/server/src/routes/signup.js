@@ -60,6 +60,11 @@ const passwordCorrect =
   }
 
   
+  const userForToken = {
+    username: user.username,
+    id: user._id,
+   
+  }
 
   const token = jwt.sign(userForToken, keys.jwt.secret)
   res
