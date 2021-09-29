@@ -10,13 +10,17 @@ export default function PathForm() {
     const [start, setStart] = useState('')
     const [end, setEnd] = useState('')
 
-    const handleSubmit = () => {
-        console.log('test')
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        console.log(title)
+        console.log(description)
+        console.log(start)
+        console.log(end)
     }
     
     return (
         <div>
-            <Form onSubmit={handleSubmit}>
+            <Form onSubmit={(e) => handleSubmit(e)}>
             <Form.Group size='lg' controlId='email'>
                 <Form.Label>Title</Form.Label>
                 <Form.Control

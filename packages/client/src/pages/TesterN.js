@@ -4,23 +4,24 @@ import PathForm from 'components/PathForm'
 import { useUser } from 'hooks'
 
 export default function TesterN() {
-    const { saveProgress, addCharacter, initialSet } = useUser()
+    // const { saveProgress, addCharacter, initialSet } = useUser()
 
-    const print = () => {
-        addCharacter('whyyyyy')
-    }
+    // const print = () => {
+    //     addCharacter('whyyyyy')
+    // }
 
-    useEffect(() => {
-        initialSet()
+    // useEffect(() => {
+    //     initialSet()
 
-        return () => saveProgress()
-    }, [])
+    //     return () => saveProgress()
+    // }, [])
     
     return (
         <div className="test-n">
             <h1>Nathan's component testing stage</h1>
-            <button onClick={() => saveProgress()}>Save Test</button>
-            <button onClick={() => print()}>Test</button>
+            {/* <button onClick={() => saveProgress()}>Save Test</button>
+            <button onClick={() => print()}>Test</button> */}
+            <PathForm />
             <LogOutBtn />
         </div>
     )
