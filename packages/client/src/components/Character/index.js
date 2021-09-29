@@ -18,7 +18,7 @@ export default function Character(props) {
                     text="I'm baby jean shorts asymmetrical lo-fi, flexitarian hashtag copper mug PBRB umami wolf unicorn aesthetic forage tofu chia. Selfies lumbersexual whatever roof party slow-carb. Poutine unicorn taiyaki, ennui locavore cliche live-edge. Hammock copper mug beard food truck." 
                     />)
         }
-        return acts
+        return acts 
     }
     
     return (
