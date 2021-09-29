@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import LogOutBtn from 'components/LogOutBtn'
 import PathForm from 'components/PathForm'
+import CharacterForm from 'components/CharacterForm'
 import { useUser } from 'hooks'
 
 export default function TesterN() {
@@ -22,6 +23,7 @@ export default function TesterN() {
             {/* <button onClick={() => saveProgress()}>Save Test</button>
             <button onClick={() => print()}>Test</button> */}
             <PathForm />
+            <CharacterForm />
             <LogOutBtn />
         </div>
     )
