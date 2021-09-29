@@ -11,7 +11,7 @@ export const UserContext = createContext(initialState)
 
 UserContext.displayName = 'UserContext'
 
-const findChar = (name) => {
+const findChar = (name, state) => {
     let result;
     for (let i = 0; i < state.characters.length; i++) {
         if (state.characters[i].name === name) {
@@ -24,7 +24,7 @@ const findChar = (name) => {
     return result;
 }
 
-const findPath = (name, char) => {
+const findPath = (name, char, state) => {
     let result
     for (let i = 0; i < state.characters[char].paths.length; i++) {
         if (state.characters[char].paths[i].name === name) {
@@ -38,6 +38,7 @@ const findPath = (name, char) => {
 }
 
 const UserReducer = (state, action) => {
+    const { character, name, color, description, start, end } = action.payload
     switch (action.type) {
         case 'INITIAL_SET':
             const initialState = action.payload
@@ -46,7 +47,6 @@ const UserReducer = (state, action) => {
                 initialState,
             }
         case 'ADD_CHARACTER':
-            const { name, description, color } = action.payload
             let newChar = {
                 name: name,
                 description: description,
@@ -59,20 +59,18 @@ const UserReducer = (state, action) => {
                 ...state,
             }
         case 'DELETE_CHARACTER':
-            const { name } = action.payload
 
             // Find the right character and delete it
-            let delCharIndex = findChar(name)
+            let delCharIndex = findChar(name, state)
             let delCharState = state.characters.splice(1, delCharIndex)
 
             return {
                 delCharState,
             }
         case 'EDIT_CHARACTER':
-            const { name, description, color } = action.payload
 
             // Find the right path and save it
-            let editCharIndex = findChar(name)
+            let editCharIndex = findChar(name, state)
 
             let editChar = {
                 name: name ? name : state.characters[editCharIndex].name,
@@ -88,9 +86,8 @@ const UserReducer = (state, action) => {
                 editCharState,
             }
         case 'ADD_PATH':
-            const { character, name, description, start, end } = action.payload
 
-            const addPathChar = findChar(character)
+            const addPathChar = findChar(character, state)
 
             let newPath = {
                 name: name,
@@ -105,9 +102,8 @@ const UserReducer = (state, action) => {
                 ...state,
             }
         case 'DELETE_PATH':
-            const { character, name } = action.payload
 
-            const delPathChar = findChar(character)
+            const delPathChar = findChar(character, state)
 
             // Find the right path and delete it
             let delPathState = state.characters[delPathChar].paths.splice(1, delCharIndex)
@@ -116,11 +112,10 @@ const UserReducer = (state, action) => {
                 delCharState,
             }
         case 'EDIT_PATH':
-            const { character, name, description, start, end } = action.payload
 
             // Find the right path and save it
-            const editPathChar = findChar(character)
-            const pathToEditIndex = findPath(name, editPathChar)
+            const editPathChar = findChar(character, state)
+            const pathToEditIndex = findPath(name, editPathChar, state)
 
             let editPath = {
                 name: name ? name : state.characters[editPathChar].paths[pathToEditIndex].name,

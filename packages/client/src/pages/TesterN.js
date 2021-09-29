@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import LogOutBtn from 'components/LogOutBtn'
+import PathForm from 'components/PathForm'
 import { useUser } from 'hooks'
 
 export default function TesterN() {
