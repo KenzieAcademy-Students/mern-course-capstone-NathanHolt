@@ -17,7 +17,9 @@ export default function UserPage() {
           {display === 'story' && <div>
             <h1>Stories</h1>
             <div className="stories">
-              <Story />
+
+              <Story  name='name' description="description"/>
+
               {/* <Story />
               <Story />
               <Story /> */}
