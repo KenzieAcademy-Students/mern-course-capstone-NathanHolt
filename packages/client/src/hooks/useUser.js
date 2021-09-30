@@ -4,7 +4,40 @@ const initialState = {
     name: '',
     author: '',
     created: 0,
-    characters: [],
+    characters: [
+        {
+            name: "name",
+            description: "description",
+            color: "color",
+            paths: [
+                {
+                    name: "path",
+                    description: "path description",
+                    start: 12,
+                    end: 14,
+                },
+                {
+                    name: "exodus",
+                    description: "path description2",
+                    start: 32,
+                    end: 44,
+                },
+            ],
+        },
+        {
+            name: "name2",
+            description: "description2",
+            color: "color2",
+            paths: [
+                {
+                    name: "path",
+                    description: "path description",
+                    start: 12,
+                    end: 14,
+                },
+            ],
+        },
+    ],
 }
 
 export const UserContext = createContext(initialState)
@@ -170,6 +203,10 @@ export const UserProvider = (props) => {
         // axios call to save a story goes here
     }
 
+    const returnState = () => {
+        return state
+    }
+
     const value = useMemo(
         () => ({
             ...state,
@@ -181,6 +218,7 @@ export const UserProvider = (props) => {
             deletePath,
             editPath,
             saveProgress,
+            returnState,
         }),
         [state]
     )

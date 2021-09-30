@@ -1,13 +1,29 @@
-import LogOutBtn from 'components/LogOutBtn'
 import Sidebar from 'components/StoryPageSideBar'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import StoryHeader from 'components/StoryHeader'
 import Character from 'components/Character'
+import { useUser } from 'hooks'
 
 
 
 export default function StoryPage() {
+    const { returnState } = useUser()
     const [question, setQuestion] = useState ('')
+    const [state, setState] = useState({})
+
+
+    useEffect(() => {
+        setState(returnState())
+    }, [])
+
+    const displayCharacter = () => {
+        let characters = []
+        for (let i = 0; i < state.characters.length; i++) {
+            characters.push(<Character data={state.characters[i]} test={i + 1} />)
+        }
+        return characters
+    }
+
     
     return (
         <div className="story-page">
@@ -24,18 +40,7 @@ export default function StoryPage() {
                         {/* <h1>Zoom out</h1> */}
                         {/* <h1>Forward</h1> */}
                     </div>
-                    <Character test={0} />
-                    <Character test={8} />
-                    <Character test={3} />
-                    <Character test={0} />
-                    <Character test={8} />
-                    <Character test={3} />
-                    <Character test={0} />
-                    <Character test={8} />
-                    <Character test={3} />
-                    <Character test={0} />
-                    <Character test={8} />
-                    <Character test={3} />
+                    {state.characters && displayCharacter()}
                 </div>
             </div>
         </div>
