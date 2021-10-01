@@ -9,9 +9,14 @@ const storySchema = new mongoose.Schema(
       unique: true,
       maxlength: 75,
     },
+    description: {
+      type: String,
+      maxlength: 500,
+    },
     author: {
       type: ObjectId,
       ref: 'User',
+      required: true,
     },
     characters: [
       {
