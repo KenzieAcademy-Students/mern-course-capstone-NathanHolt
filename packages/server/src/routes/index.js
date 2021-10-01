@@ -1,14 +1,14 @@
 import express from 'express'
 import { User } from '../models'
-import signupRouter from  "./signup"
-import storyRouter from "./story"
-import userrouter from "./user"
+import signupRouter from './signup'
+import storyRouter from './story'
+import userrouter from './user'
+import devRouter from './dev'
 const router = express.Router()
 
 // router.get("/" ,async(req, res, next) => {
 //   res.send("this is the  endpoint");
 // });
-
 
 router.get('/sample', async (req, res, next) => {
 
@@ -25,5 +25,6 @@ router.get('/sample', async (req, res, next) => {
 })
 router.use('/signup', signupRouter)
 router.use('/story', storyRouter)
-router.use('/user',userrouter)
+router.use('/user', userrouter)
+router.use('/dev', devRouter)
 module.exports = router

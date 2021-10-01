@@ -23,7 +23,7 @@ router.post('/signup', async (req, res) => {
 
   User.findOne({ username: username }).then((data) => {
     if (data) {
-      return res.status(422).json({ error: 'username taken!' })
+      return res.status(422).json({ err: 'User alright here' })
     }
 
     const MIN_PASSWORD_LENGTH = 0

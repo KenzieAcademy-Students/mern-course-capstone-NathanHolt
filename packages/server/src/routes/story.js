@@ -8,42 +8,6 @@ router.get('/', async (req, res, next) => {
   res.send('this is the story endpoint')
 })
 
-// find a given users storyboard
-router.get('/:username', async (req, res, next) => {
-  const populateQuery = [
-    {
-      path: 'storyboard',
-      select: ['name', 'createdAt', 'updatedAt'],
-      populate: [
-        // in case we want to make them global
-        { path: 'author', select: ['username'] },
-
-        {
-          path: 'characters',
-          select: ['name', 'description', 'color'],
-          populate: [
-            {
-              path: 'paths',
-              select: ['name', 'description', 'start', 'end'],
-            },
-          ],
-        },
-      ],
-    },
-  ]
-
-  const user = await User.findOne({ username: req.params.username })
-    .sort({ createdAt: -1 })
-    .populate(populateQuery)
-    .exec()
-
-  if (user) {
-    res.status(200).json(user.storyboard.map((story) => story.toJSON()))
-  } else {
-    res.status(404).end()
-  }
-})
-
 router.post('/', requireAuth, async (request, response, next) => {
   console.log(chalk.red('running one'))
   const { name } = request.body

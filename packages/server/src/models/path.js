@@ -10,18 +10,14 @@ const pathSchema = new mongoose.Schema({
     type: String,
     maxlength: 300,
   },
-  start: [
-    {
-      type: Number,
-      required: true,
-    },
-  ],
-  end: [
-    {
-      type: Number,
-      required: true,
-    },
-  ],
+  start: {
+    type: Number,
+    required: true,
+  },
+  end: {
+    type: Number,
+    required: true,
+  },
 })
 
 const Path = mongoose.model('Path', pathSchema)
