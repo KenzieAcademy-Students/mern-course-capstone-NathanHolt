@@ -19,7 +19,7 @@ export default function StoryPage() {
     const displayCharacter = () => {
         let characters = []
         for (let i = 0; i < state.characters.length; i++) {
-            characters.push(<Character data={state.characters[i]} test={i + 1} />)
+            characters.push(<Character index={i} data={state.characters[i]} test={i + 1} />)
         }
         return characters
     }
