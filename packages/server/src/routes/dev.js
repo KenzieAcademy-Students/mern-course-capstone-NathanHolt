@@ -104,7 +104,7 @@ router.get('/storyboard/user/all/', async (req, res) => {
       .sort({ createdAt: -1 })
       .populate(populateQuery)
 
-    res.status(200).send(users)
+    if (users) res.status(200).send(users)
   } catch (error) {
     res.status(404).send({ error: error })
   }
@@ -144,7 +144,7 @@ router.get('/storyboard/all/:username', async (req, res) => {
       .sort({ createdAt: -1 })
       .populate(populateQuery)
 
-    res.status(200).send(user)
+    if (user) res.status(200).send(user)
   } catch (error) {
     res.status(404).send({ error: error })
   }
@@ -170,7 +170,7 @@ router.get('/story/characters/:id', async (req, res) => {
       .populate(populateQuery)
       .exec()
 
-    if (story) res.send(story)
+    if (story) res.status(200).send(story)
   } catch (error) {
     res.status(404).send({ error: error })
   }
@@ -202,11 +202,10 @@ router.post('/create/story', async (req, res) => {
   const { user } = req.body
 
   const story = await Story.findOne({ name: name })
-  if (story)
-    if (user._id === story.author.toString())
-      return res
-        .status(422)
-        .json({ error: 'story with that name already exists!' })
+  if (story && user._id === story.author.toString())
+    return res
+      .status(422)
+      .json({ error: 'story with that name already exists!' })
 
   try {
     const story = new Story({
@@ -229,7 +228,6 @@ router.post('/create/story', async (req, res) => {
         new: true,
       }
     )
-
     res.status(201).send(savedStory)
   } catch (error) {
     res.status(422).send({ error: error })
