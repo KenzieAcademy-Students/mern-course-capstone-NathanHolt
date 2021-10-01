@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import { useUser } from 'hooks'
 import './PathForm.css'
 
 export default function PathForm() {
+    const { addPath } = useUser()
 
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
@@ -16,6 +18,7 @@ export default function PathForm() {
         console.log(description)
         console.log(start)
         console.log(end)
+        addPath({ name: title, description: description, start: start, end: end })
     }
     
     return (

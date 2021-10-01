@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import { useUser } from 'hooks'
 import './CharacterForm.css'
 
 export default function CharacterForm() {
+    const { addCharacter } = useUser()
 
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
@@ -14,6 +16,7 @@ export default function CharacterForm() {
         console.log(name)
         console.log(description)
         console.log(color)
+        addCharacter({ name: name, description: description, color: color })
     }
     
     return (

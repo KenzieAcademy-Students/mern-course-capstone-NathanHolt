@@ -136,7 +136,7 @@ const UserReducer = (state, action) => {
             }
         case 'ADD_PATH':
 
-            const addPathChar = findChar(action.payload.character, state)
+            const addPathChar = findChar(action.payload.name, state)
 
             let newPath = {
                 name: action.payload.name,
@@ -152,13 +152,13 @@ const UserReducer = (state, action) => {
             }
         case 'DELETE_PATH':
 
-            const delPathChar = findChar(action.payload.character, state)
+            const delPathChar = findChar(action.payload, state)
 
             // Find the right path and delete it
             let delPathState = state.characters[delPathChar].paths.splice(1, delCharIndex)
 
             return {
-                delCharState,
+                delPathState,
             }
         case 'EDIT_PATH':
 
