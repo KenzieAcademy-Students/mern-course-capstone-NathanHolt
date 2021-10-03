@@ -5,36 +5,38 @@ import StoryForm from 'components/StoryForm'
 import UserEditor from 'components/UserEditor'
 
 export default function UserPage() {
-  const [display, setDisplay] = useState ('story')
-  
-  return (
-    <div className="user-page">
+  const [display, setDisplay] = useState('story')
+  const user = JSON.parse(localStorage.getItem('user'))
 
+  return (
+    <div className='user-page'>
       <UserHeader displayer={(value) => setDisplay(value)} />
 
-        <div className="body">
-
-          {display === 'story' && <div>
-            <h1>Stories</h1>
-            <div className="stories">
-
-              <Story  name='name' description="description"/>
-
-              {/* <Story />
-              <Story />
-              <Story /> */}
+      <div className='body'>
+        {display === 'story' && (
+          <div>
+            <div className='stories'>
+              {user.storyboard.length < 1 && <h1>No Stories</h1>}
+              {user.storyboard &&
+                user.storyboard.map((story) => (
+                  <Story name={story.name} description={story.description} />
+                ))}
             </div>
-          </div>}
+          </div>
+        )}
 
-          {display === 'story-form' && <div>
+        {display === 'story-form' && (
+          <div>
             <StoryForm />
-          </div>}
+          </div>
+        )}
 
-          {display === 'user' && <div>
+        {display === 'user' && (
+          <div>
             <UserEditor />
-          </div>}
-
-        </div>
+          </div>
+        )}
+      </div>
     </div>
   )
 }

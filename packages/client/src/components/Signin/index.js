@@ -20,7 +20,7 @@ export default function SignInLogic() {
       username: username,
       password: password,
     })
-    localStorage.setItem('user', JSON.stringify(res))
+    localStorage.setItem('user', JSON.stringify(res.data))
     history.push(`/user/${username}`)
   }
   return (
