@@ -1,5 +1,5 @@
 import express from 'express'
-import { User } from '../models'
+import { Story, User } from '../models'
 import bcrypt from 'bcryptjs'
 import keys from '../config/keys'
 import jwt from 'jsonwebtoken'
@@ -88,7 +88,7 @@ router.post('/signin', async (req, res) => {
     username,
     uid: user.id,
     email: user.email,
-    storyboard: user.storyboard.map((story) => story.name.toJSON()),
+    storyboard: await Story.find({ _id: { $in: user.storyboard } }),
   })
 })
 
