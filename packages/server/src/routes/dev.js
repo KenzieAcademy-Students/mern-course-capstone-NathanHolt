@@ -202,7 +202,7 @@ router.post('/create/story', async (req, res) => {
   const { user } = req.body
 
   const story = await Story.findOne({ name: name })
-  if (story && user._id === story.author.toString())
+  if (story && user.uid === story.author.toString())
     return res
       .status(422)
       .json({ error: 'story with that name already exists!' })
@@ -210,7 +210,7 @@ router.post('/create/story', async (req, res) => {
   try {
     const story = new Story({
       name,
-      author: user._id,
+      author: user.uid,
       description,
     })
 
@@ -219,7 +219,7 @@ router.post('/create/story', async (req, res) => {
 
     await User.findByIdAndUpdate(
       {
-        _id: user._id,
+        _id: user.uid,
       },
       {
         $push: { storyboard: savedStory._id },
