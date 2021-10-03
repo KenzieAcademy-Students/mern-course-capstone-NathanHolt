@@ -17,10 +17,10 @@ export default function StoryForm() {
     let res = await axios.post('/api/dev/create/story', {
       name,
       description,
-      user: user.data,
+      user,
     })
     console.log(res.data)
-    history.push(`/user/${user.data.username}`)
+    history.push(`/user/${user.username}`)
   }
 
   return (
