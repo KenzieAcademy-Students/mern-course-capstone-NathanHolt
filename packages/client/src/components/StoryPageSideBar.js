@@ -1,9 +1,15 @@
-import React from "react";
-import {Nav} from "react-bootstrap";
+import React, { useState } from "react";
+import {Nav, Button} from "react-bootstrap";
 import { withRouter } from "react-router";
+import Modal from 'react-bootstrap/Modal'
+import CharacterForm from './CharacterForm'
 
 const Side = props => {
    
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     return (
         <>
@@ -28,7 +34,24 @@ const Side = props => {
                 </Nav.Link>
             </Nav.Item>
             </Nav>
-          
+
+            <Button variant="primary" onClick={handleShow}>
+                Add a Character
+            </Button>
+
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                <Modal.Title>Add a Character</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <CharacterForm />
+                </Modal.Body>
+                <Modal.Footer>
+                <Button variant="secondary" onClick={handleClose}>
+                    Close
+                </Button>
+                </Modal.Footer>
+            </Modal>
         </>
         );
   };
