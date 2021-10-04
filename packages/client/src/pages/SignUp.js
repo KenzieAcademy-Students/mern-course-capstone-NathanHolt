@@ -23,7 +23,7 @@ export default function SignUp() {
       password: password,
       email: email,
     })
-    localStorage.setItem("user", username)
+    // localStorage.setItem("user", username)
     history.push(`/user/${username}`)
   }
   return (
