@@ -4,7 +4,8 @@ import Button from "react-bootstrap/Button";
 import { useUser } from 'hooks'
 import './PathForm.css'
 
-export default function PathForm() {
+export default function PathForm(props) {
+    const { name } = props
     const { addPath } = useUser()
 
     const [title, setTitle] = useState('')
@@ -14,11 +15,7 @@ export default function PathForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(title)
-        console.log(description)
-        console.log(start)
-        console.log(end)
-        addPath({ name: title, description: description, start: start, end: end })
+        addPath({ title: title, name: name, description: description, start: start, end: end })
     }
     
     return (

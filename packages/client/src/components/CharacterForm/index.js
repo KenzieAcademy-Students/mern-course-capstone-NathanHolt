@@ -13,9 +13,6 @@ export default function CharacterForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(name)
-        console.log(description)
-        console.log(color)
         addCharacter({ name: name, description: description, color: color })
     }
     

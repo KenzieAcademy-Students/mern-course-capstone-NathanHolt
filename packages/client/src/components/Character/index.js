@@ -23,7 +23,8 @@ export default function Character(props) {
                     total={storyLength} 
                     position={unit * (i * 15) <= 100 ? unit * (i * 10) : unit} 
                     length={unit * (i * 2) < 3 ? 3 : unit * (i * 2)} 
-                    title={data.paths[i].name}  
+                    title={data.paths[i].name}
+                    name={data.name}  
                     text={data.paths[i].description} 
                     />)
         }
@@ -47,7 +48,7 @@ export default function Character(props) {
                 <Modal.Title>Add Path</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <PathForm />
+                    <PathForm name={data.name} />
                 </Modal.Body>
                 <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>

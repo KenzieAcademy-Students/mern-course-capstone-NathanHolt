@@ -30,19 +30,19 @@ const initialState = {
             color: "color2",
             paths: [
                 {
-                    name: "path",
+                    name: "path1",
                     description: "path description",
                     start: 12,
                     end: 14,
                 },
                 {
-                    name: "path",
+                    name: "path2",
                     description: "path description",
                     start: 22,
                     end: 24,
                 },
                 {
-                    name: "path",
+                    name: "path3",
                     description: "path description",
                     start: 32,
                     end: 34,
@@ -85,9 +85,7 @@ const UserReducer = (state, action) => {
         case 'INITIAL_SET':
             const initialState = action.payload
 
-            return {
-                initialState,
-            }
+            return initialState
         case 'ADD_CHARACTER':
             let newChar = {
                 name: action.payload.name,
@@ -109,9 +107,7 @@ const UserReducer = (state, action) => {
             if (delCharIndex === "Character not found") {
                 delCharState = state
             } else {
-                console.log(state.characters)
                 delCharState = state.characters.splice(delCharIndex, 1)
-                console.log(delCharState)
             }
             
             return delCharState;
@@ -131,20 +127,18 @@ const UserReducer = (state, action) => {
             // replace editChar with existing character
             let editCharState = state.characters.splice(1, editCharIndex, editChar)
 
-            return {
-                editCharState,
-            }
+            return editCharState
         case 'ADD_PATH':
 
             const addPathChar = findChar(action.payload.name, state)
-
+            
             let newPath = {
-                name: action.payload.name,
+                name: action.payload.title,
                 description: action.payload.description,
                 start: action.payload.start,
                 end: action.payload.end,
             }
-
+            
             state.characters[addPathChar].paths.push(newPath)
 
             return {
@@ -152,14 +146,21 @@ const UserReducer = (state, action) => {
             }
         case 'DELETE_PATH':
 
-            const delPathChar = findChar(action.payload, state)
+            const delPathChar = findChar(action.payload.name, state)
+            const delPathIndex = findPath(action.payload.title, delPathChar, state)
 
             // Find the right path and delete it
-            let delPathState = state.characters[delPathChar].paths.splice(1, delCharIndex)
+            let delPathState 
 
-            return {
-                delPathState,
+            if (delPathIndex === "Character not found") {
+                delPathState = state
+            } else if (delPathChar === "Character not found") {
+                delPathState = state
+            } else {
+                delPathState = state.characters[delPathChar].paths.splice(delPathIndex, 1)
             }
+
+            return delPathState
         case 'EDIT_PATH':
 
             // Find the right path and save it
@@ -176,9 +177,7 @@ const UserReducer = (state, action) => {
             // replace editPath with the old path
             let editPathState = state.characters[editPathChar].paths[pathToEditIndex].splice(1, pathToEditIndex, editPath)
 
-            return {
-                editPathState,
-            }
+            return editPathState
         default: 
             return state
     }
