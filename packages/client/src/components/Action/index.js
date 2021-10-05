@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
+import { useUser } from 'hooks'
 import './Action.css'
 
 export default function Action(props) {
-    const { title, length, text, position } = props 
+    const { title, length, text, position, name } = props
+    const { deletePath } = useUser() 
 
     const [show, setShow] = useState(false);
 
@@ -38,7 +40,7 @@ export default function Action(props) {
                 <Button variant="secondary" onClick={handleClose}>
                     Close
                 </Button>
-                <Button variant="danger" onClick={handleClose}>
+                <Button variant="danger" onClick={() => deletePath({ title: title, name: name })}>
                     Delete
                 </Button>
                 </Modal.Footer>
