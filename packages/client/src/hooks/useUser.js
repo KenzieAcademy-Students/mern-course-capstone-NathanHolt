@@ -6,7 +6,7 @@ const initialState = {
     created: 0,
     characters: [
         {
-            name: "name",
+            name: "nathan",
             description: "description",
             color: "color",
             paths: [
@@ -25,7 +25,7 @@ const initialState = {
             ],
         },
         {
-            name: "name2",
+            name: "jeff",
             description: "description2",
             color: "color2",
             paths: [

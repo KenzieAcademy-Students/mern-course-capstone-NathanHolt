@@ -4,7 +4,8 @@ import Button from "react-bootstrap/Button";
 import { useUser } from 'hooks'
 import './CharacterForm.css'
 
-export default function CharacterForm() {
+export default function CharacterForm(props) {
+    const { edit } = props
     const { addCharacter } = useUser()
 
     const [name, setName] = useState('')
@@ -13,7 +14,11 @@ export default function CharacterForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        addCharacter({ name: name, description: description, color: color })
+        if (edit) {
+            console.log('edit')
+        } else {
+            addCharacter({ name: name, description: description, color: color })
+        }
     }
     
     return (
