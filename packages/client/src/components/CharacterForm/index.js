@@ -5,8 +5,8 @@ import { useUser } from 'hooks'
 import './CharacterForm.css'
 
 export default function CharacterForm(props) {
-    const { edit } = props
-    const { addCharacter } = useUser()
+    const { edit, editName } = props
+    const { addCharacter, editCharacter } = useUser()
 
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
@@ -15,7 +15,7 @@ export default function CharacterForm(props) {
     const handleSubmit = (e) => {
         e.preventDefault()
         if (edit) {
-            console.log('edit')
+            editCharacter({ name: editName, newName: name, description: description, color: color })
         } else {
             addCharacter({ name: name, description: description, color: color })
         }
