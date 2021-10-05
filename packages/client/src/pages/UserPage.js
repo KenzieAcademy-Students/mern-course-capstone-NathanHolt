@@ -16,7 +16,7 @@ export default function UserPage() {
         {display === 'story' && (
           <div>
             <div className='stories'>
-              {!user.storyboard && <h1>No Stories</h1>}
+              {!user.storyboard.length && <h1>No Stories</h1>}
               {user.storyboard &&
                 user.storyboard.map((story) => (
                   <Story name={story.name} description={story.description} />
