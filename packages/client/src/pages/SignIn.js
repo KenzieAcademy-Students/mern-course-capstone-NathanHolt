@@ -1,9 +1,12 @@
 import React from 'react'
-
+import SignInLogic from 'components/Signin'
 export default function SignIn() {
-    return (
-        <div>
-            SignIn
-        </div>
-    )
+  return (
+    <>
+      <div>
+        <SignInLogic></SignInLogic>
+        
+      </div>
+    </>
+  )
 }
