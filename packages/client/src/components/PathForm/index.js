@@ -5,8 +5,8 @@ import { useUser } from 'hooks'
 import './PathForm.css'
 
 export default function PathForm(props) {
-    const { name } = props
-    const { addPath } = useUser()
+    const { name, edit, editName } = props
+    const { addPath, editPath } = useUser()
 
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
@@ -15,7 +15,11 @@ export default function PathForm(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        addPath({ title: title, name: name, description: description, start: start, end: end })
+        if (edit) {
+            editPath({ oldName: editName, title: title, name: name, description: description, start: start, end: end })
+        } else {
+            addPath({ title: title, name: name, description: description, start: start, end: end })
+        }
     }
     
     return (

@@ -5,17 +5,24 @@ import Modal from 'react-bootstrap/Modal'
 import CharacterForm from './CharacterForm'
 import { useUser } from 'hooks'
 import "./StoryPageSideBar.css"
+
 const Side = props => {
     const { returnState } = useUser()
    
     const [show, setShow] = useState(false);
     const [show2, setShow2] = useState(false);
+    const [tempName, setTempName] = useState('');
     const [data, setData] = useState(returnState());
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const handleClose2 = () => setShow2(false);
     const handleShow2 = () => setShow2(true);
+
+    const handleEdit = (name) => {
+        setTempName(name)
+        handleShow2()
+    }
 
 
     return (
@@ -42,7 +49,7 @@ const Side = props => {
             </Nav.Item> */}
 
             {data && data.characters.map((char) => {
-                return <Nav.Item onClick={() => handleShow2()}className="char">
+                return <Nav.Item onClick={() => handleEdit(char.name)}className="char">
                             <Nav.Link>{char.name}</Nav.Link>
                         </Nav.Item>
             })}
@@ -73,7 +80,7 @@ const Side = props => {
                 <Modal.Title>Edit a Character</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <CharacterForm edit={true} />
+                    <CharacterForm edit={true} editName={tempName} />
                 </Modal.Body>
                 <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose2}>
