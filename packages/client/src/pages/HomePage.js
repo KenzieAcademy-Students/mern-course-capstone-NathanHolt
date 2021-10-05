@@ -10,9 +10,7 @@ export default function HomePage(props) {
 
   useEffect(() => {
     let user = JSON.parse(localStorage.getItem('user'))
-    if (user) {
-      history.push(`/user/${user.username}`)
-    }
+    if (user) history.push(`/user/${user.username}`)
   }, [])
 
   return (
