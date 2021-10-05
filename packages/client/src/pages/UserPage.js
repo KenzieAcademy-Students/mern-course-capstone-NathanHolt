@@ -7,7 +7,7 @@ import UserEditor from 'components/UserEditor'
 export default function UserPage() {
   const [display, setDisplay] = useState('story')
   const user = JSON.parse(localStorage.getItem('user'))
-
+  console.log(user)
   return (
     <div className='user-page'>
       <UserHeader displayer={(value) => setDisplay(value)} />
@@ -24,7 +24,7 @@ export default function UserPage() {
             </div>
           </div>
         )}
-
+          
         {display === 'story-form' && (
           <div>
             <StoryForm />
