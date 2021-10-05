@@ -7,6 +7,7 @@ export default function LogOutBtn() {
 
   const handleClick = () => {
     // localStorage.setItem("user", "")
+    localStorage.removeItem('user')
     history.push('/')
   }
 
