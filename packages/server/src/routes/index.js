@@ -2,6 +2,7 @@ import express from 'express'
 import { User } from '../models'
 import signupRouter from './signup'
 import storyRouter from './story'
+import pathRouter from './path'
 import userrouter from './user'
 import devRouter from './dev'
 import CharacterRouter  from './characters'
@@ -12,12 +13,11 @@ const router = express.Router()
 // });
 
 router.get('/sample', async (req, res, next) => {
-
-  let user = await User.findOne({}).exec();
+  let user = await User.findOne({}).exec()
 
   if (!user) {
     const newUser = new User({
-      username: "Freddie",
+      username: 'Freddie',
     })
     user = await newUser.save()
   }
@@ -26,6 +26,7 @@ router.get('/sample', async (req, res, next) => {
 })
 router.use('/signup', signupRouter)
 router.use('/story', storyRouter)
+router.use('/path', pathRouter)
 router.use('/user', userrouter)
 router.use('/dev', devRouter)
 router.use('/characters',CharacterRouter)
