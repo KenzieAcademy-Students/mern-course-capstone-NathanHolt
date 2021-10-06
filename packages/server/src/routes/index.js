@@ -5,6 +5,7 @@ import storyRouter from './story'
 import pathRouter from './path'
 import userrouter from './user'
 import devRouter from './dev'
+import CharacterRouter  from './characters'
 const router = express.Router()
 
 // router.get("/" ,async(req, res, next) => {
@@ -28,4 +29,5 @@ router.use('/story', storyRouter)
 router.use('/path', pathRouter)
 router.use('/user', userrouter)
 router.use('/dev', devRouter)
+router.use('/characters',CharacterRouter)
 module.exports = router
