@@ -1,9 +1,11 @@
 import React, { createContext, useContext, useReducer, useMemo } from 'react'
+import axios from 'axios'
 
 const initialState = {
     name: '',
     author: '',
     created: 0,
+    storyId: null,
     characters: [
         {
             name: "nathan",
@@ -94,6 +96,16 @@ const UserReducer = (state, action) => {
                 paths: [],
             }
             state.characters.push(newChar)
+
+            const sender = async () => {
+                let res = await axios.post('/api/story/character', {
+                    name: action.payload.name,
+                    description: action.payload.description,
+                    color: action.payload.color,
+                    story_Id: state.storyId,
+                  })
+            }
+            sender()
 
             return {
                 ...state,
