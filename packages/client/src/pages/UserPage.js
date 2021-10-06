@@ -7,7 +7,7 @@ import UserEditor from 'components/UserEditor'
 export default function UserPage() {
   const [display, setDisplay] = useState('story')
   const user = JSON.parse(localStorage.getItem('user'))
-
+  console.log(user)
   return (
     <div className='user-page'>
       <UserHeader displayer={(value) => setDisplay(value)} />
@@ -16,7 +16,7 @@ export default function UserPage() {
         {display === 'story' && (
           <div>
             <div className='stories'>
-              {user.storyboard.length < 1 && <h1>No Stories</h1>}
+              {user && !user.storyboard.length && <h1>No Stories</h1>}
               {user.storyboard &&
                 user.storyboard.map((story) => (
                   <Story name={story.name} description={story.description} />
@@ -24,7 +24,7 @@ export default function UserPage() {
             </div>
           </div>
         )}
-
+          
         {display === 'story-form' && (
           <div>
             <StoryForm />

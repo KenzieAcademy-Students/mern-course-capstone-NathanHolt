@@ -3,23 +3,37 @@ import {Nav, Button} from "react-bootstrap";
 import { withRouter } from "react-router";
 import Modal from 'react-bootstrap/Modal'
 import CharacterForm from './CharacterForm'
+import { useUser } from 'hooks'
+import "./StoryPageSideBar.css"
 
 const Side = props => {
+    const { returnState } = useUser()
    
     const [show, setShow] = useState(false);
+    const [show2, setShow2] = useState(false);
+    const [tempName, setTempName] = useState('');
+    const [data, setData] = useState(returnState());
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const handleClose2 = () => setShow2(false);
+    const handleShow2 = () => setShow2(true);
+
+    const handleEdit = (name) => {
+        setTempName(name)
+        handleShow2()
+    }
+
 
     return (
         <>
     
-            <Nav className="col-md-12 d-none d-md-block bg-light sidebar"
+            <div className="col-md-12 d-none d-md-block bg-light sidebar"
             activeKey="/home"
             onSelect={selectedKey => alert(`selected ${selectedKey}`)}
             >
                 <div className="sidebar-sticky"></div>
-            <Nav.Item>
+            {/* <Nav.Item>
                 <Nav.Link href="/home">Active</Nav.Link>
             </Nav.Item>
             <Nav.Item>
@@ -32,8 +46,15 @@ const Side = props => {
                 <Nav.Link eventKey="disabled" disabled>
                 Disabled
                 </Nav.Link>
-            </Nav.Item>
-            </Nav>
+            </Nav.Item> */}
+
+            {data && data.characters.map((char) => {
+                return <Nav.Item onClick={() => handleEdit(char.name)}className="char">
+                            <Nav.Link>{char.name}</Nav.Link>
+                        </Nav.Item>
+            })}
+            
+            </div>
 
             <Button variant="primary" onClick={handleShow}>
                 Add a Character
@@ -48,6 +69,21 @@ const Side = props => {
                 </Modal.Body>
                 <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>
+                    Close
+                </Button>
+                </Modal.Footer>
+            </Modal>
+
+
+            <Modal show={show2} onHide={handleClose2}>
+                <Modal.Header closeButton>
+                <Modal.Title>Edit a Character</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <CharacterForm edit={true} editName={tempName} />
+                </Modal.Body>
+                <Modal.Footer>
+                <Button variant="secondary" onClick={handleClose2}>
                     Close
                 </Button>
                 </Modal.Footer>

@@ -6,7 +6,7 @@ const initialState = {
     created: 0,
     characters: [
         {
-            name: "name",
+            name: "nathan",
             description: "description",
             color: "color",
             paths: [
@@ -25,7 +25,7 @@ const initialState = {
             ],
         },
         {
-            name: "name2",
+            name: "jeff",
             description: "description2",
             color: "color2",
             paths: [
@@ -118,7 +118,7 @@ const UserReducer = (state, action) => {
             let editCharIndex = findChar(action.payload.name, state)
 
             let editChar = {
-                name: action.payload.name ? action.payload.name : state.characters[editCharIndex].name,
+                name: action.payload.newName ? action.payload.newName : state.characters[editCharIndex].name,
                 description: action.payload.description ? action.payload.description : state.characters[editCharIndex].description,
                 color: action.payload.color ? action.payload.color : state.characters[editCharIndex].color,
                 paths: state.characters[editCharIndex].paths,
@@ -165,7 +165,7 @@ const UserReducer = (state, action) => {
 
             // Find the right path and save it
             const editPathChar = findChar(action.payload.character, state)
-            const pathToEditIndex = findPath(action.payload.name, editPathChar, state)
+            const pathToEditIndex = findPath(action.payload.oldName, editPathChar, state)
 
             let editPath = {
                 name: action.payload.name ? action.payload.name : state.characters[editPathChar].paths[pathToEditIndex].name,
