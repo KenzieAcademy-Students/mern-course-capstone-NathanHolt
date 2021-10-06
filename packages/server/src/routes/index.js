@@ -2,7 +2,7 @@ import express from 'express'
 import { User } from '../models'
 import signupRouter from './signup'
 import storyRouter from './story'
-import pathRouter from './story'
+import pathRouter from './path'
 import userrouter from './user'
 import devRouter from './dev'
 const router = express.Router()
