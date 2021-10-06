@@ -1,15 +1,10 @@
 import express from 'express'
-import { Path, Character, Story, User } from '../models'
-import { requireAuth } from '../middleware'
+import { Path, Character } from '../models'
 
 const router = express.Router()
 
-// create path on character by _id
 router
   // retrieve all paths
-  .get('/', async (req, res) => {
-    res.send('fuck you')
-  })
   .get('/all', async (req, res) => {
     try {
       const path = await Path.find({})
@@ -19,6 +14,7 @@ router
       res.status(404).send({ error: error })
     }
   })
+  // create a path on character by _id
   .post('/create', async (req, res) => {
     const { id, name, description, start, end } = req.body
 
@@ -46,6 +42,7 @@ router
       res.status(422).send({ error: error })
     }
   })
+  // edit existing path by _id
   .put('/:id', async (req, res) => {
     const { name, description, start, end } = req.body
     const { id } = req.params
