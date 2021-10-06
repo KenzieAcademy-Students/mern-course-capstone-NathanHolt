@@ -49,7 +49,7 @@ router.post('/signup', async (req, res) => {
         user
           .save()
           .then((user) => {
-            res.json({ message: `${user.username} created!` })
+            res.status(201).send(user)
           })
           .catch((err) => {
             console.log(err)
