@@ -82,10 +82,10 @@ const UserReducer = (state, action) => {
                 delCharState = state.characters.splice(delCharIndex, 1)
             }
 
-            const delChar = async () => {
-                let res = await axios.post(`/api/story/${action.payload.charId}`)
-            }
-            delChar()
+            // const delChar = async () => {
+            //     let res = await axios.delete(`/api/story/${action.payload.charId}`)
+            // }
+            // delChar()
             
             return delCharState;
             
@@ -151,7 +151,10 @@ const UserReducer = (state, action) => {
                 delPathState = state.characters[delPathChar].paths.splice(delPathIndex, 1)
             }
 
-
+            // const delPath = async () => {
+            //     let res = await axios.delete(`/api/path/${action.payload.charId}`)
+            // }
+            // delPath()
 
             return delPathState
         case 'EDIT_PATH':
