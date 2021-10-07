@@ -81,4 +81,31 @@ router.put("/character", async (request, response, next) => {
   }
 });
 
+
+router.delete('/:character', async (request, response, next) => {
+  const { user } = request
+  const { id } = request.params
+  const character = await character.findById(id)
+  console.log(character)
+
+  if (!character) {
+    return response.status(422).json({ error: 'Cannot find charater ' })
+  }
+  console.log(typeof user, user)
+  if (character.author._id.toString() === user._id.toString()) {
+    try {
+      const removedCharacter = await story.remove()
+
+      const userUpdate = await User.updateOne(
+        { _id: user._id },
+        { $pull: { posts: id } }
+      )
+
+      response.json(removedCharacter)
+    } catch (err) {
+      next(err)
+    }
+  }
+})
+
 module.exports = router;
