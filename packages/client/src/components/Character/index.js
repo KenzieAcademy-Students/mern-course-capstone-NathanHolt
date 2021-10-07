@@ -17,12 +17,12 @@ export default function Character(props) {
     const renderActions = (num) => {
         let acts = []
         for (let i = 0; i < data.paths.length; i++) {
-            let storyLength = 10 * num
+            let storyLength = 100
             let unit = 100 / storyLength 
             acts.push(<Action 
                     total={storyLength} 
-                    position={unit * (i * 15) <= 100 ? unit * (i * 10) : unit} 
-                    length={unit * (i * 2) < 3 ? 3 : unit * (i * 2)} 
+                    position={data.paths[i].start} 
+                    length={ parseInt(data.paths[i].end) - parseInt(data.paths[i].start)} 
                     title={data.paths[i].name}
                     name={data.name}  
                     text={data.paths[i].description} 

@@ -7,13 +7,23 @@ import { useUser } from 'hooks'
 
 
 export default function StoryPage() {
-    const { returnState } = useUser()
+    const { returnState, initialSet } = useUser()
     const [question, setQuestion] = useState ('')
     const [state, setState] = useState({})
 
 
     useEffect(() => {
         setState(returnState())
+
+        return () => {
+            initialSet({
+                name: '',
+                author: '',
+                created: 0,
+                storyId: null,
+                characters: [],
+            })
+        }
     }, [])
 
     const displayCharacter = () => {

@@ -48,7 +48,7 @@ const Side = props => {
                 </Nav.Link>
             </Nav.Item> */}
 
-            {data && data.characters.map((char) => {
+            {data.characters && data.characters.map((char) => {
                 return <Nav.Item onClick={() => handleEdit(char.name)}className="char">
                             <Nav.Link>{char.name}</Nav.Link>
                         </Nav.Item>
