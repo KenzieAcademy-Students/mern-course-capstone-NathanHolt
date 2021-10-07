@@ -58,5 +58,25 @@ router
       res.status(404).send({ error: error })
     }
   })
+  // delete a path on a character
+  .delete('/:id', async (req, res) => {
+    const PathId = req.params.id
+    const CharId = req.body
+    const { user } = req
+
+    const path = await Path.findOne({ _id: PathId })
+    if (!path) return res.status(422).json({ error: 'Cannot find path' })
+
+    // if (path.author.toString() === user._id)
+    try {
+      const removedStory = await path.remove()
+
+      await Character.updateOne({ _id: CharId }, { $pull: { paths: PathId } })
+
+      res.status(202).send(removedStory)
+    } catch (err) {
+      res.status(404).send({ error: error })
+    }
+  })
 
 module.exports = router
