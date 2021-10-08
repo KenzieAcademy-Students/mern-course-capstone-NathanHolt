@@ -12,13 +12,12 @@ router.post('/', requireAuth, async (request, response, next) => {
   console.log(chalk.red('running one'))
   const { name } = request.body
   const { user } = request
-  const currentUser = await User.findById(user._id)
+  const currentUser = await User.findById(user.uid)
   console.log(chalk.red(name))
-  console.log(chalk.red(user._id))
 
   const story = new Story({
     name: name,
-    author: user._id,
+    author: user.uid,
 
     //  characters:characters,
   })
