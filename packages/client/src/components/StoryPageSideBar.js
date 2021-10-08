@@ -49,8 +49,8 @@ const Side = props => {
             </Nav.Item> */}
 
             {data.characters && data.characters.map((char) => {
-                return <Nav.Item onClick={() => handleEdit(char.name)}className="char">
-                            <Nav.Link>{char.name}</Nav.Link>
+                return <Nav.Item style={{ backgroundColor: char.color }} onClick={() => handleEdit(char.name)}className="char">
+                            <Nav.Link className="char-name">{char.name}</Nav.Link>
                         </Nav.Item>
             })}
             
