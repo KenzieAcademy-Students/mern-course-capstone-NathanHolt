@@ -28,7 +28,7 @@ const Side = props => {
     return (
         <>
     
-            <div className="col-md-12 d-none d-md-block bg-light sidebar"
+            <div className="sidebar"
             activeKey="/home"
             onSelect={selectedKey => alert(`selected ${selectedKey}`)}
             >

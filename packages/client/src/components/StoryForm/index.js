@@ -22,6 +22,7 @@ export default function StoryForm() {
       user,
     })
     initialSet(res.data)
+    console.log(res.data)
     history.push(`/story/${name}`)
   }
 
