@@ -33,8 +33,8 @@ const Side = props => {
     }
 
     useEffect(() => {
-        console.log('rtes')
-    }, [data])
+        setData(returnState())
+    }, [props.dummy])
 
     return (
         <div>

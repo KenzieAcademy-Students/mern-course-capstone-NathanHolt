@@ -18,15 +18,6 @@ export default function StoryPage() {
         initialSet(newInfo.data)
         setState(newInfo.data)
 
-        // return () => {
-        //     initialSet({
-        //         name: '',
-        //         author: '',
-        //         created: 0,
-        //         storyId: null,
-        //         characters: [],
-        //     })
-        // }
     }, [])
 
 

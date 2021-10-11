@@ -48,6 +48,7 @@ const UserReducer = (state, action) => {
         let addCharId
         
             const sendChar = async () => {
+                console.log("Sending character")
                 let res = await axios.post('/api/dev/character/create', {
                     id: state.storyId,
                     name: action.payload.name,
