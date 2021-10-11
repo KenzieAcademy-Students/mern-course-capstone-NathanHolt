@@ -16,7 +16,7 @@ export default function StoryHeader(props) {
   const [data, setData] = useState(returnState())
 
   useEffect(() => {
-    setUser(localStorage.getItem("user"))
+    setUser(JSON.parse(localStorage.getItem("user")))
   }, [])
 
   const handleDelete = () => {
@@ -28,7 +28,7 @@ export default function StoryHeader(props) {
         <div className="header">
             <Logo />
           <div className="nav">
-            <Button variant="secondary" onClick={() => history.push(`/user/${user}`)}>See all Stories</Button> 
+            <Button variant="secondary" onClick={() => history.push(`/user/${user.username}`)}>See all Stories</Button> 
             {/* <Button variant="outline-dark" onClick={() => displayer('new')}>Create new Story</Button>  */}
             <Button variant="outline-danger" onClick={() => handleDelete()}>Delete Story</Button>
           </div>

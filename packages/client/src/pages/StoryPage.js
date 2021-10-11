@@ -2,29 +2,33 @@ import Sidebar from 'components/StoryPageSideBar'
 import React, { useState, useEffect } from 'react'
 import StoryHeader from 'components/StoryHeader'
 import Character from 'components/Character'
+import axios from 'axios'
+import { useParams } from "react-router-dom"
 import { useUser } from 'hooks'
 
-
-
 export default function StoryPage() {
+    const { name } = useParams()
     const { returnState, initialSet } = useUser()
     const [question, setQuestion] = useState ('')
     const [state, setState] = useState({})
 
 
-    useEffect(() => {
-        setState(returnState())
+    useEffect(async () => {
+        const newInfo = await axios.get(`/api/dev/story/characters/${name}`)
+        await initialSet(newInfo.data)
+        setState(newInfo.data)
 
-        return () => {
-            initialSet({
-                name: '',
-                author: '',
-                created: 0,
-                storyId: null,
-                characters: [],
-            })
-        }
+        // return () => {
+        //     initialSet({
+        //         name: '',
+        //         author: '',
+        //         created: 0,
+        //         storyId: null,
+        //         characters: [],
+        //     })
+        // }
     }, [])
+
 
     const displayCharacter = () => {
         let characters = []
@@ -45,7 +49,7 @@ export default function StoryPage() {
                 <div className="story-main">
                     <div className="story-line">
 
-                        <h1>Timeline</h1>
+                        <h1>{state.name}</h1>
                         <div className="line-box">
                             <div className="line-left"></div>
                             <div className="line-line"></div>

@@ -10,7 +10,7 @@ export default function UserPage() {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')))
   
   useEffect(async () => {
-    const newInfo = await axios.get(`/api/dev/user/${user.username}`)
+    const newInfo = await axios.get(`/api/dev/storyboard/all/${user.username}`)
     console.log(newInfo.data)
     setUser(newInfo.data)
   }, [])
@@ -26,7 +26,7 @@ export default function UserPage() {
               {user && !user.storyboard.length && <h1>No Stories</h1>}
               {user.storyboard &&
                 user.storyboard.map((story) => (
-                  <Story name={story.name} description={story.description} />
+                  <Story name={story.name} id={story._id} description={story.description} />
                 ))}
             </div>
           </div>
