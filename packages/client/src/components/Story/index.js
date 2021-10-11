@@ -6,7 +6,7 @@ export default function Story(props) {
   let history = useHistory()
 
   function handleClick() {
-    history.push(`/story/${props.name} `)
+    history.push(`/story/${props.id} `)
   }
 
   return (

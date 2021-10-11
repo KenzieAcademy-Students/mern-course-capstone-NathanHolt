@@ -46,17 +46,17 @@ const UserReducer = (state, action) => {
         case 'ADD_CHARACTER':
 
         let addCharId
-
-            // const sendChar = async () => {
-            //     let res = await axios.post('/api/dev/character/create', {
-            //         id: state.storyId,
-            //         name: action.payload.name,
-            //         description: action.payload.description,
-            //         color: action.payload.color,
-            //       })
-            //       addCharId = res._id
-            // }
-            // sendChar()
+        
+            const sendChar = async () => {
+                let res = await axios.post('/api/dev/character/create', {
+                    id: state.storyId,
+                    name: action.payload.name,
+                    description: action.payload.description,
+                    color: action.payload.color,
+                  })
+                  addCharId = res._id
+            }
+            sendChar()
 
             let newChar = {
                 name: action.payload.name,
