@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {Nav, Button} from "react-bootstrap";
 import { withRouter } from "react-router";
 import Modal from 'react-bootstrap/Modal'
@@ -24,9 +24,20 @@ const Side = props => {
         handleShow2()
     }
 
+    const displaychars = () => {
+        return data.characters.map((char) => {
+            return <Nav.Item style={{ backgroundColor: char.color }} onClick={() => handleEdit(char.name)}className="char">
+                        <Nav.Link className="char-name">{char.name}</Nav.Link>
+                    </Nav.Item>
+        })
+    }
+
+    useEffect(() => {
+        console.log('rtes')
+    }, [data])
 
     return (
-        <>
+        <div>
     
             <div className="sidebar"
             activeKey="/home"
@@ -48,11 +59,7 @@ const Side = props => {
                 </Nav.Link>
             </Nav.Item> */}
 
-            {data.characters && data.characters.map((char) => {
-                return <Nav.Item style={{ backgroundColor: char.color }} onClick={() => handleEdit(char.name)}className="char">
-                            <Nav.Link className="char-name">{char.name}</Nav.Link>
-                        </Nav.Item>
-            })}
+            {data.characters && displaychars()}
             
             </div>
 
@@ -88,7 +95,7 @@ const Side = props => {
                 </Button>
                 </Modal.Footer>
             </Modal>
-        </>
+        </div>
         );
   };
   const Sidebar = withRouter(Side);

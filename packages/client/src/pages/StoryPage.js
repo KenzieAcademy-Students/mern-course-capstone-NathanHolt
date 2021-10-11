@@ -15,7 +15,7 @@ export default function StoryPage() {
 
     useEffect(async () => {
         const newInfo = await axios.get(`/api/dev/story/characters/${name}`)
-        await initialSet(newInfo.data)
+        initialSet(newInfo.data)
         setState(newInfo.data)
 
         // return () => {
@@ -45,7 +45,7 @@ export default function StoryPage() {
                 <StoryHeader displayer={(e) => setQuestion(e)} />
             </div>
             <div className="story-body">
-                <div className="story-sidebar"><Sidebar></Sidebar></div>
+                <div className="story-sidebar"><Sidebar dummy={state}></Sidebar></div>
                 <div className="story-main">
                     <div className="story-line">
 
