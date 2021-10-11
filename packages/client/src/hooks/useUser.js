@@ -173,6 +173,14 @@ const UserReducer = (state, action) => {
             // replace editPath with the old path
             let editPathState = state.characters[editPathChar].paths[pathToEditIndex].splice(1, pathToEditIndex, editPath)
 
+            // const pathRes = await axios.put(`/api/path/${action.payload.id}`,  {
+            //     name: action.payload.title,
+            //     description: action.payload.description,
+            //     start: action.payload.start,
+            //     end: action.payload.end,
+            //   }
+            // )
+        
             return editPathState
         default: 
             return state

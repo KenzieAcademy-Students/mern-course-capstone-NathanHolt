@@ -38,8 +38,37 @@ router.get('/paths/all', async (req, res) => {
 
 // retrieve specific user
 router.get('/user/:name', async (req, res) => {
+
+  const populateQuery = [
+    {
+      path: 'storyboard',
+      select: [
+        'name',
+        'description',
+        'createdAt',
+        'updatedAt',
+        'author',
+        'characters',
+      ],
+      populate: [
+        { path: 'author', select: ['username'] },
+        {
+          path: 'characters',
+          select: ['name', 'description', 'color', 'paths'],
+          populate: [
+            {
+              path: 'path',
+              select: ['name', 'description', 'start', 'end'],
+            },
+          ],
+        },
+      ],
+    },
+  ]
+
   try {
-    const user = await User.findOne({ username: req.params.name })
+    const user = await User.findOne({ username: req.params.name }).populate(populateQuery)
+
 
     if (user) res.status(200).json(user)
   } catch (error) {
