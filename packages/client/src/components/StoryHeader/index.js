@@ -19,10 +19,13 @@ export default function StoryHeader(props) {
     setUser(JSON.parse(localStorage.getItem("user")))
   }, [])
 
-  const handleDelete = () => {
+  const instance = axios.create({
+    baseURL: `http://localhost:3000/api/`,
+  })
+
+  const handleDelete = async () => {
     let newData = returnState()
-    console.log(newData._id)
-    axios.delete(`api/dev/delete/${newData._id}`, { data: { user: user } })
+    let res = await instance.delete(`dev/delete/${newData._id}`, { data: { user: user } })
     history.push(`/user/${user.username}`)
   }
   
