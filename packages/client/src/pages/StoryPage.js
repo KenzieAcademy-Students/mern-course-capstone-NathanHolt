@@ -44,11 +44,14 @@ export default function StoryPage() {
                 <div className="story-sidebar"><Sidebar></Sidebar></div>
                 <div className="story-main">
                     <div className="story-line">
-                        {/* <h1>Back</h1> */}
-                        {/* <h1>Zoom</h1> */}
+
                         <h1>Timeline</h1>
-                        {/* <h1>Zoom out</h1> */}
-                        {/* <h1>Forward</h1> */}
+                        <div className="line-box">
+                            <div className="line-left"></div>
+                            <div className="line-line"></div>
+                            <div className="line-right"></div>
+                        </div>
+
                     </div>
                     {state.characters && displayCharacter()}
                 </div>

@@ -234,7 +234,35 @@ li * {
   margin-top: 5px;
 }
 
+.line-box {
+  display: flex;
+  justify-content: center;
+  z-index: -1;
+}
 
+.line-line {
+  height: 8px;
+  background: rgba(0, 0, 0, 0.6);
+  width: 95%;
+}
+
+.line-right {
+  height: 30px;
+  width: 30px;
+  border: 8px solid rgba(0, 0, 0, 0.6);
+  transform: rotate(45deg);
+  border-left: none;
+  border-bottom: none;
+}
+
+.line-left {
+  height: 30px;
+  width: 30px;
+  border: 8px solid rgba(0, 0, 0, 0.6);
+  transform: rotate(45deg);
+  border-right: none;
+  border-top: none;
+}
 
 .test-row {
   display: flex;
