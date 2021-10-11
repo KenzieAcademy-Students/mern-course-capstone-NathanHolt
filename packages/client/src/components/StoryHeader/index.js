@@ -20,8 +20,10 @@ export default function StoryHeader(props) {
   }, [])
 
   const handleDelete = () => {
-    axios.delete(`api/dev/delete/${data._id}`, { user: user })
-    history.push(`/user/${user.name}`)
+    let newData = returnState()
+    console.log(newData._id)
+    axios.delete(`api/dev/delete/${newData._id}`, { data: { user: user } })
+    history.push(`/user/${user.username}`)
   }
   
     return (
