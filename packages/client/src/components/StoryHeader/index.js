@@ -20,7 +20,7 @@ export default function StoryHeader(props) {
   }, [])
 
   const instance = axios.create({
-    baseURL: `http://localhost:3000/api/`,
+    baseURL: `https://hydrogen-capstone-parallel.herokuapp.com/api/`,
   })
 
   const handleDelete = async () => {
