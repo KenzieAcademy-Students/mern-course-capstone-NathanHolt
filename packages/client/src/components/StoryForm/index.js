@@ -16,10 +16,11 @@ export default function StoryForm() {
 
   async function handleSubmit(event) {
     event.preventDefault()
+    console.log(user)
     let res = await axios.post('/api/dev/create/story', {
-      name,
-      description,
-      user,
+       name,
+       description,
+       user,
     })
     initialSet(res.data)
     console.log(res.data)

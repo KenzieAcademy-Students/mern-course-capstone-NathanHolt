@@ -230,31 +230,32 @@ router.post('/create/story', async (req, res) => {
   const { name, description } = req.body
   const { user } = req.body
 
-  const story = await Story.findOne({ name: name })
-  if (story && user.uid === story.author.toString())
-    return res
-      .status(422)
-      .json({ error: 'story with that name already exists!' })
-  try {
-    const story = new Story({
-      name,
-      author: user.uid,
-      description,
-    })
-
-    const savedStory = await story.save()
-    user.storyboard = user.storyboard.concat(savedStory._id)
-
-    await User.findByIdAndUpdate(
-      {
-        _id: user.uid,
-      },
-      {
-        $push: { storyboard: savedStory._id },
-      },
-      {
-        new: true,
-      }
+const story = await Story.findOne({ name: name })
+if (story && user.uid === story.author.toString())
+return res
+.status(422)
+.json({ error: 'story with that name already exists!' })
+  
+try {
+  const story = new Story({
+    name,
+    author: user.uid,
+    description,
+  })
+  
+  const savedStory = await story.save()
+  user.storyboard = user.storyboard.concat(savedStory._id)
+  
+  await User.findByIdAndUpdate(
+    {
+      _id: user.uid,
+    },
+    {
+      $push: { storyboard: savedStory._id },
+    },
+    {
+      new: true,
+    }
     )
     res.status(201).send(savedStory)
   } catch (error) {
@@ -293,8 +294,8 @@ router.post('/character/create', async (req, res) => {
       )
       res.status(201).send(savedCharacter)
     }
-  } catch (error) {
-    res.status(422).send({ error: error })
+  } catch (err) {
+    res.status(422).send( err)
   }
 })
 
