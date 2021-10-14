@@ -21,8 +21,7 @@ router.post('/', requireAuth, async (request, response, next) => {
 
     //  characters:characters,
   })
-  console.log(chalk.yellow(currentUser))
-  console.log(chalk.yellow(currentUser.storyboard))
+  
   try {
     const savedStory = await story.save()
 

@@ -21,11 +21,11 @@ router.get("/characters/all", async (req, res) => {
 // Create a character
 router.post("/create", async (req, res) => {
   const { id, name, description, color } = req.body;
-  // const { user } = req.body
+  
 
   try {
     let story = await Story.findOne({ _id: id });
-    // if (story && story.author.toString() === user._id) {
+    
     if (story) {
       const character = new Character({
         name,

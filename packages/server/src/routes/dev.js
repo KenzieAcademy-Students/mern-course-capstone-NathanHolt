@@ -262,7 +262,7 @@ try {
   }
 })
 
-// Create a character
+
 router.post('/character/create', async (req, res) => {
   const { id, name, description, color } = req.body
   // const { user } = req.body

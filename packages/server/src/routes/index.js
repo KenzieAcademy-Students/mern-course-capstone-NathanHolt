@@ -8,9 +8,6 @@ import devRouter from './dev'
 import CharacterRouter  from './characters'
 const router = express.Router()
 
-// router.get("/" ,async(req, res, next) => {
-//   res.send("this is the  endpoint");
-// });
 
 router.get('/sample', async (req, res, next) => {
   let user = await User.findOne({}).exec()
