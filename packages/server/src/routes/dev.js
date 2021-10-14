@@ -38,8 +38,37 @@ router.get('/paths/all', async (req, res) => {
 
 // retrieve specific user
 router.get('/user/:name', async (req, res) => {
+
+  const populateQuery = [
+    {
+      path: 'storyboard',
+      select: [
+        'name',
+        'description',
+        'createdAt',
+        'updatedAt',
+        'author',
+        'characters',
+      ],
+      populate: [
+        { path: 'author', select: ['username'] },
+        {
+          path: 'characters',
+          select: ['name', 'description', 'color', 'paths'],
+          populate: [
+            {
+              path: 'path',
+              select: ['name', 'description', 'start', 'end'],
+            },
+          ],
+        },
+      ],
+    },
+  ]
+
   try {
-    const user = await User.findOne({ username: req.params.name })
+    const user = await User.findOne({ username: req.params.name }).populate(populateQuery)
+
 
     if (user) res.status(200).json(user)
   } catch (error) {
@@ -200,33 +229,31 @@ router.delete('/delete/:id', async (req, res) => {
 router.post('/create/story', async (req, res) => {
   const { name, description } = req.body
   const { user } = req.body
-
-  const story = await Story.findOne({ name: name })
-  if (story && user.uid === story.author.toString())
-    return res
-      .status(422)
-      .json({ error: 'story with that name already exists!' })
-
-  try {
-    const story = new Story({
-      name,
-      author: user.uid,
-      description,
-    })
-
-    const savedStory = await story.save()
-    user.storyboard = user.storyboard.concat(savedStory._id)
-
-    await User.findByIdAndUpdate(
-      {
-        _id: user.uid,
-      },
-      {
-        $push: { storyboard: savedStory._id },
-      },
-      {
-        new: true,
-      }
+const story = await Story.findOne({ name: name })
+if (story && user._id === story.author.toString())
+return res
+.status(422)
+.json({ error: 'story with that name already exists!' })
+try {
+  const story = new Story({
+    name,
+    author: user._id,
+    description,
+  })
+  
+  const savedStory = await story.save()
+  user.storyboard = user.storyboard.concat(savedStory._id)
+  
+  await User.findByIdAndUpdate(
+    {
+      _id: user._id,
+    },
+    {
+      $push: { storyboard: savedStory._id },
+    },
+    {
+      new: true,
+    }
     )
     res.status(201).send(savedStory)
   } catch (error) {

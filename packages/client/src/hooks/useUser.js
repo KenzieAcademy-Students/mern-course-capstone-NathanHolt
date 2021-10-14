@@ -1,55 +1,12 @@
 import React, { createContext, useContext, useReducer, useMemo } from 'react'
+import axios from 'axios'
 
 const initialState = {
     name: '',
     author: '',
     created: 0,
-    characters: [
-        {
-            name: "nathan",
-            description: "description",
-            color: "color",
-            paths: [
-                {
-                    name: "path",
-                    description: "path description",
-                    start: 12,
-                    end: 14,
-                },
-                {
-                    name: "exodus",
-                    description: "path description2",
-                    start: 32,
-                    end: 44,
-                },
-            ],
-        },
-        {
-            name: "jeff",
-            description: "description2",
-            color: "color2",
-            paths: [
-                {
-                    name: "path1",
-                    description: "path description",
-                    start: 12,
-                    end: 14,
-                },
-                {
-                    name: "path2",
-                    description: "path description",
-                    start: 22,
-                    end: 24,
-                },
-                {
-                    name: "path3",
-                    description: "path description",
-                    start: 32,
-                    end: 34,
-                },
-            ],
-        },
-    ],
+    storyId: null,
+    characters: [],
 }
 
 export const UserContext = createContext(initialState)
@@ -87,10 +44,26 @@ const UserReducer = (state, action) => {
 
             return initialState
         case 'ADD_CHARACTER':
+
+        let addCharId
+        
+            const sendChar = async () => {
+                console.log("Sending character")
+                let res = await axios.post('/api/dev/character/create', {
+                    id: state.storyId,
+                    name: action.payload.name,
+                    description: action.payload.description,
+                    color: action.payload.color,
+                  })
+                  addCharId = res._id
+            }
+            sendChar()
+
             let newChar = {
                 name: action.payload.name,
                 description: action.payload.description,
                 color: action.payload.color,
+                id: addCharId,
                 paths: [],
             }
             state.characters.push(newChar)
@@ -109,6 +82,11 @@ const UserReducer = (state, action) => {
             } else {
                 delCharState = state.characters.splice(delCharIndex, 1)
             }
+
+            // const delChar = async () => {
+            //     let res = await axios.delete(`/api/story/${action.payload.charId}`)
+            // }
+            // delChar()
             
             return delCharState;
             
@@ -131,12 +109,26 @@ const UserReducer = (state, action) => {
         case 'ADD_PATH':
 
             const addPathChar = findChar(action.payload.name, state)
+
+            let addPathId
+
+            const sendPath = async () => {
+                const pathRes = await axios.post('/api/dev/path/create', {
+                    id: state.characters[addPathChar].id,
+                    name: state.characters[addPathChar].name,
+                    description: state.characters[addPathChar].description,
+                    color: state.characters[addPathChar].color,
+                })
+                addPathId = pathRes._id
+            }
+            sendPath()
             
             let newPath = {
                 name: action.payload.title,
                 description: action.payload.description,
                 start: action.payload.start,
                 end: action.payload.end,
+                id: addPathId,
             }
             
             state.characters[addPathChar].paths.push(newPath)
@@ -160,6 +152,11 @@ const UserReducer = (state, action) => {
                 delPathState = state.characters[delPathChar].paths.splice(delPathIndex, 1)
             }
 
+            // const delPath = async () => {
+            //     let res = await axios.delete(`/api/path/${action.payload.charId}`)
+            // }
+            // delPath()
+
             return delPathState
         case 'EDIT_PATH':
 
@@ -177,6 +174,14 @@ const UserReducer = (state, action) => {
             // replace editPath with the old path
             let editPathState = state.characters[editPathChar].paths[pathToEditIndex].splice(1, pathToEditIndex, editPath)
 
+            // const pathRes = await axios.put(`/api/path/${action.payload.id}`,  {
+            //     name: action.payload.title,
+            //     description: action.payload.description,
+            //     start: action.payload.start,
+            //     end: action.payload.end,
+            //   }
+            // )
+        
             return editPathState
         default: 
             return state

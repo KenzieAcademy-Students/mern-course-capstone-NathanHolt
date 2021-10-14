@@ -2,19 +2,24 @@ import Sidebar from 'components/StoryPageSideBar'
 import React, { useState, useEffect } from 'react'
 import StoryHeader from 'components/StoryHeader'
 import Character from 'components/Character'
+import axios from 'axios'
+import { useParams } from "react-router-dom"
 import { useUser } from 'hooks'
 
-
-
 export default function StoryPage() {
-    const { returnState } = useUser()
+    const { name } = useParams()
+    const { returnState, initialSet } = useUser()
     const [question, setQuestion] = useState ('')
     const [state, setState] = useState({})
 
 
-    useEffect(() => {
-        setState(returnState())
+    useEffect(async () => {
+        const newInfo = await axios.get(`/api/dev/story/characters/${name}`)
+        initialSet(newInfo.data)
+        setState(newInfo.data)
+
     }, [])
+
 
     const displayCharacter = () => {
         let characters = []
@@ -31,14 +36,17 @@ export default function StoryPage() {
                 <StoryHeader displayer={(e) => setQuestion(e)} />
             </div>
             <div className="story-body">
-                <div className="story-sidebar"><Sidebar></Sidebar></div>
+                <div className="story-sidebar"><Sidebar dummy={state}></Sidebar></div>
                 <div className="story-main">
                     <div className="story-line">
-                        {/* <h1>Back</h1> */}
-                        {/* <h1>Zoom</h1> */}
-                        <h1>Timeline</h1>
-                        {/* <h1>Zoom out</h1> */}
-                        {/* <h1>Forward</h1> */}
+
+                        <h1>{state.name}</h1>
+                        <div className="line-box">
+                            <div className="line-left"></div>
+                            <div className="line-line"></div>
+                            <div className="line-right"></div>
+                        </div>
+
                     </div>
                     {state.characters && displayCharacter()}
                 </div>

@@ -1,6 +1,8 @@
 import React from 'react'
 import { useHistory } from "react-router-dom";
 import datapirates from './datapirates.png'
+import './Logo.css'
+
 export default function Logo() {
     const history = useHistory()
 
@@ -10,7 +12,7 @@ export default function Logo() {
     
     return (
         <div className='logo' onClick={() => handleClick()} >
-            <img src={datapirates} />
+            <img className='pirate' src={datapirates} />
         </div>
     )
 }
