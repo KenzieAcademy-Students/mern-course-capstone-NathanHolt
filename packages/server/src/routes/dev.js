@@ -38,7 +38,6 @@ router.get('/paths/all', async (req, res) => {
 
 // retrieve specific user
 router.get('/user/:name', async (req, res) => {
-
   const populateQuery = [
     {
       path: 'storyboard',
@@ -67,8 +66,9 @@ router.get('/user/:name', async (req, res) => {
   ]
 
   try {
-    const user = await User.findOne({ username: req.params.name }).populate(populateQuery)
-
+    const user = await User.findOne({ username: req.params.name }).populate(
+      populateQuery
+    )
 
     if (user) res.status(200).json(user)
   } catch (error) {
@@ -229,12 +229,13 @@ router.delete('/delete/:id', async (req, res) => {
 router.post('/create/story', async (req, res) => {
   const { name, description } = req.body
   const { user } = req.body
-  console.log(user)
+
 const story = await Story.findOne({ name: name })
 if (story && user.uid === story.author.toString())
 return res
 .status(422)
 .json({ error: 'story with that name already exists!' })
+  
 try {
   const story = new Story({
     name,
