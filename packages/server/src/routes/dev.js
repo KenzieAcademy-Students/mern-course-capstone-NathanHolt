@@ -286,7 +286,7 @@ router.post('/character/create', async (req, res) => {
           _id: id,
         },
         {
-          $push: { characters: savedCharacter._id },
+          $push: { characters: savedCharacter },
         },
         {
           new: true,
