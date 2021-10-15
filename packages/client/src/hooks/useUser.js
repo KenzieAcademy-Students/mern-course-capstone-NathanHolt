@@ -54,8 +54,9 @@ const UserReducer = (state, action) => {
                     name: action.payload.name,
                     description: action.payload.description,
                     color: action.payload.color,
-                  })
-                  addCharId = res._id
+                })
+                console.log(res.data)
+                addCharId = res._id
             }
             sendChar()
 
