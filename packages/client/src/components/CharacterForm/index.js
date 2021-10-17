@@ -2,22 +2,33 @@ import React, { useState } from 'react'
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useUser } from 'hooks'
+import axios from 'axios'
 import './CharacterForm.css'
 
 export default function CharacterForm(props) {
     const { edit, editName } = props
-    const { addCharacter, editCharacter } = useUser()
+    const { addCharacter, editCharacter, returnState } = useUser()
 
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
     const [color, setColor] = useState('')
+    const [data, setData] = useState(returnState())
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
+        setData(returnState())
         if (edit) {
             editCharacter({ name: editName, newName: name, description: description, color: color })
         } else {
-            addCharacter({ name: name, description: description, color: color })
+            let addCharId
+            let res = await axios.post('/api/dev/character/create', {
+                id: data._id,
+                name: name,
+                description: description,
+                color: color,
+            })
+            addCharId = res._id
+            addCharacter({ name: name, description: description, color: color, id: addCharId })
         }
     }
     

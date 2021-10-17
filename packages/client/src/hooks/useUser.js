@@ -45,26 +45,26 @@ const UserReducer = (state, action) => {
             return initialState
         case 'ADD_CHARACTER':
 
-        let addCharId
+        // let addCharId
         
-            const sendChar = async () => {
-                console.log("Sending character")
-                let res = await axios.post('/api/dev/character/create', {
-                    id: state.storyId,
-                    name: action.payload.name,
-                    description: action.payload.description,
-                    color: action.payload.color,
-                })
-                console.log(res.data)
-                addCharId = res._id
-            }
-            sendChar()
+        //     const sendChar = async () => {
+        //         console.log("Sending character")
+        //         let res = await axios.post('/api/dev/character/create', {
+        //             id: state.storyId,
+        //             name: action.payload.name,
+        //             description: action.payload.description,
+        //             color: action.payload.color,
+        //         })
+        //         console.log(res.data)
+        //         addCharId = res._id
+        //     }
+        //     sendChar()
 
             let newChar = {
                 name: action.payload.name,
                 description: action.payload.description,
                 color: action.payload.color,
-                id: addCharId,
+                id: action.payload.id,
                 paths: [],
             }
             state.characters.push(newChar)
@@ -81,13 +81,18 @@ const UserReducer = (state, action) => {
             if (delCharIndex === "Character not found") {
                 delCharState = state
             } else {
+                const delChar = async () => {
+                    const user = JSON.parse(localStorage.getItem('user'))
+                    console.log(state.characters[delCharIndex]._id)
+                    let res = await axios.delete(`/api/characters/${state.characters[delCharIndex]._id}`, { data: { user: user } })
+                    console.log("del char")
+                }
+                delChar()
+
                 delCharState = state.characters.splice(delCharIndex, 1)
+
             }
 
-            // const delChar = async () => {
-            //     let res = await axios.delete(`/api/story/${action.payload.charId}`)
-            // }
-            // delChar()
             
             return delCharState;
             
@@ -115,10 +120,11 @@ const UserReducer = (state, action) => {
 
             const sendPath = async () => {
                 const pathRes = await axios.post('/api/dev/path/create', {
-                    id: state.characters[addPathChar].id,
-                    name: state.characters[addPathChar].name,
-                    description: state.characters[addPathChar].description,
-                    color: state.characters[addPathChar].color,
+                    name: action.payload.title,
+                    description: action.payload.description,
+                    start: action.payload.start,
+                    end: action.payload.end,
+                    id: state.characters[addPathChar]._id,
                 })
                 addPathId = pathRes._id
             }
@@ -150,13 +156,17 @@ const UserReducer = (state, action) => {
             } else if (delPathChar === "Character not found") {
                 delPathState = state
             } else {
+                const delPath = async () => {
+                    const userP = JSON.parse(localStorage.getItem('user'))
+                    let res = await axios.delete(`/api/path/${state.characters[delPathChar].paths[delPathIndex]._id}`, { data: { user: userP, CharId: state.characters[delPathChar]._id } })
+                    console.log("del path")
+                    }
+                delPath()
+
                 delPathState = state.characters[delPathChar].paths.splice(delPathIndex, 1)
+
             }
 
-            // const delPath = async () => {
-            //     let res = await axios.delete(`/api/path/${action.payload.charId}`)
-            // }
-            // delPath()
 
             return delPathState
         case 'EDIT_PATH':

@@ -1,5 +1,5 @@
 import express from "express";
-import Character from "../models";
+import { Path, Character, Story, User } from '../models'
 
 const router = express.Router();
 
@@ -82,30 +82,30 @@ router.put("/character", async (request, response, next) => {
 });
 
 
-router.delete('/:character', async (request, response, next) => {
-  const { user } = request
+router.delete('/:id', async (request, response, next) => {
+  const { user } = request.body
   const { id } = request.params
-  const character = await character.findById(id)
-  console.log(character)
+  // console.log(id)
+  const character = await Character.findById(id)
+  // console.log(character)
 
   if (!character) {
     return response.status(422).json({ error: 'Cannot find charater ' })
   }
-  console.log(typeof user, user)
-  if (character.author._id.toString() === user._id.toString()) {
+  // console.log(typeof user, user)
     try {
-      const removedCharacter = await story.remove()
+      const removedCharacter = await character.remove()
 
       const userUpdate = await User.updateOne(
         { _id: user._id },
         { $pull: { posts: id } }
       )
 
-      response.json(removedCharacter)
+      response.status(200).json(removedCharacter)
     } catch (err) {
-      next(err)
+      response.status(422).send({ error: error });
     }
-  }
+  
 })
 
 module.exports = router;
