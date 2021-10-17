@@ -61,8 +61,7 @@ router
   // delete a path on a character
   .delete('/:id', async (req, res) => {
     const PathId = req.params.id
-    const CharId = req.body
-    const { user } = req
+    const { user, CharId } = req.body
 
     const path = await Path.findOne({ _id: PathId })
     if (!path) return res.status(422).json({ error: 'Cannot find path' })
