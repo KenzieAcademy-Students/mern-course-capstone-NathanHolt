@@ -45,26 +45,26 @@ const UserReducer = (state, action) => {
             return initialState
         case 'ADD_CHARACTER':
 
-        let addCharId
+        // let addCharId
         
-            const sendChar = async () => {
-                console.log("Sending character")
-                let res = await axios.post('/api/dev/character/create', {
-                    id: state.storyId,
-                    name: action.payload.name,
-                    description: action.payload.description,
-                    color: action.payload.color,
-                })
-                console.log(res.data)
-                addCharId = res._id
-            }
-            sendChar()
+        //     const sendChar = async () => {
+        //         console.log("Sending character")
+        //         let res = await axios.post('/api/dev/character/create', {
+        //             id: state.storyId,
+        //             name: action.payload.name,
+        //             description: action.payload.description,
+        //             color: action.payload.color,
+        //         })
+        //         console.log(res.data)
+        //         addCharId = res._id
+        //     }
+        //     sendChar()
 
             let newChar = {
                 name: action.payload.name,
                 description: action.payload.description,
                 color: action.payload.color,
-                id: addCharId,
+                id: action.payload.id,
                 paths: [],
             }
             state.characters.push(newChar)
@@ -84,10 +84,11 @@ const UserReducer = (state, action) => {
                 delCharState = state.characters.splice(delCharIndex, 1)
             }
 
-            // const delChar = async () => {
-            //     let res = await axios.delete(`/api/story/${action.payload.charId}`)
-            // }
-            // delChar()
+            const delChar = async () => {
+                let res = await axios.delete(`/api/characters/${action.payload.charId}`)
+                console.log("del char")
+            }
+            delChar()
             
             return delCharState;
             
@@ -115,10 +116,11 @@ const UserReducer = (state, action) => {
 
             const sendPath = async () => {
                 const pathRes = await axios.post('/api/dev/path/create', {
-                    id: state.characters[addPathChar].id,
-                    name: state.characters[addPathChar].name,
-                    description: state.characters[addPathChar].description,
-                    color: state.characters[addPathChar].color,
+                    name: action.payload.title,
+                    description: action.payload.description,
+                    start: action.payload.start,
+                    end: action.payload.end,
+                    id: state.characters[addPathChar]._id,
                 })
                 addPathId = pathRes._id
             }

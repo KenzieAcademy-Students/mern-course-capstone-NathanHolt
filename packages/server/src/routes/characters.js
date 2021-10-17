@@ -101,9 +101,9 @@ router.delete('/:character', async (request, response, next) => {
         { $pull: { posts: id } }
       )
 
-      response.json(removedCharacter)
+      response.status(200).json(removedCharacter)
     } catch (err) {
-      next(err)
+      response.status(422).send({ error: error });
     }
   }
 })

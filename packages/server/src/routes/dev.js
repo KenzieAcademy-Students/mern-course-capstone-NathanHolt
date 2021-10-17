@@ -267,20 +267,20 @@ try {
 router.post('/character/create', async (req, res) => {
   const { id, name, description, color } = req.body
   // const { user } = req.body
-
+  
   try {
     let story = await Story.findOne({ _id: id })
     // if (story && story.author.toString() === user._id) {
-    if (story) {
-      const character = new Character({
-        name,
-        description,
-        color,
-      })
-
+      if (story) {
+        const character = new Character({
+          name,
+          description,
+          color,
+        })
+      
       const savedCharacter = await character.save()
-      story.characters = story.characters.concat(savedCharacter._id)
-
+      // story.characters = story.characters.concat(savedCharacter._id)
+      
       await Story.findByIdAndUpdate(
         {
           _id: id,
@@ -314,8 +314,7 @@ router.post('/path/create', async (req, res) => {
       })
 
       const savedPath = await path.save()
-      character.paths = character.paths.concat(savedPath._id)
-
+      // character.paths = character.paths.concat(savedPath._id)
       await Character.findByIdAndUpdate(
         {
           _id: id,
