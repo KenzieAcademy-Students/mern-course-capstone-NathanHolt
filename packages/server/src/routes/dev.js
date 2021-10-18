@@ -238,7 +238,7 @@ return res
 try {
   const story = new Story({
     name,
-    author: user.uid,
+    author: user._id,
     description,
   })
   console.log('test2')
