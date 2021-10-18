@@ -16,7 +16,9 @@ export default function StoryForm() {
 
   async function handleSubmit(event) {
     event.preventDefault()
+    const newInfo = await axios.get(`/api/dev/storyboard/all/${user.username}`)
     console.log(user)
+    console.log(newInfo)
     let res = await axios.post('/api/dev/create/story', {
        name,
        description,
