@@ -236,6 +236,7 @@ return res
 .json({ error: 'story with that name already exists!' })
   
 try {
+  console.log(user)
   const story = new Story({
     name,
     author: user._id,
