@@ -244,7 +244,7 @@ try {
   console.log('test2')
 
   const savedStory = await story.save()
-  user.storyboard = user.storyboard.concat(savedStory._id)
+  // user.storyboard = user.storyboard.concat(savedStory._id)
   console.log('test3')
 
   await User.findByIdAndUpdate(
