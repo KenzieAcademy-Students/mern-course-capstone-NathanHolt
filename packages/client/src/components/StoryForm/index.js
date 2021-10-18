@@ -14,10 +14,14 @@ export default function StoryForm() {
   const user = JSON.parse(localStorage.getItem('user'))
   const validateForm = () => name.length > 0
 
+  const instance = axios.create({
+    baseURL: `https://hydrogen-capstone-parallel.herokuapp.com/api/`,
+  })
+
   async function handleSubmit(event) {
     event.preventDefault()
     const newInfo = await axios.get(`/api/dev/storyboard/all/${user.username}`)
-    let res = await axios.post('/api/dev/create/story', {
+    let res = await instance.post('/api/dev/create/story', {
        name,
        description,
        user : newInfo.data,
