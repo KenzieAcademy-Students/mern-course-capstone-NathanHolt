@@ -251,7 +251,7 @@ try {
 
   await User.findByIdAndUpdate(
     {
-      _id: user.uid,
+      _id: userFind._id,
     },
     {
       $push: { storyboard: savedStory._id },
