@@ -210,16 +210,14 @@ router.delete('/delete/:id', async (req, res) => {
   const id = req.params.id
   const { user } = req.body
 
-  const userFind = await User.findOne({ username: user.username })
-
   const story = await Story.findOne({ _id: id })
   if (!story) return res.status(422).json({ error: 'Cannot find story' })
 
-  if (story.author.toString() === userFind._id)
+  if (story.author.toString() === user._id)
     try {
       const removedStory = await story.remove()
 
-      await User.updateOne({ _id: userFind._id }, { $pull: { storyboard: id } })
+      await User.updateOne({ _id: user._id }, { $pull: { storyboard: id } })
 
       res.status(202).json(removedStory)
     } catch (err) {
