@@ -227,9 +227,8 @@ router.delete('/delete/:id', async (req, res) => {
 
 // Create a story
 router.post('/create/story', async (req, res) => {
-  const { name, description } = req.body
-  const { user } = req.body
-
+const { name, description, user } = req.body
+console.log('test1')
 const story = await Story.findOne({ name: name })
 if (story && user.uid === story.author.toString())
 return res
@@ -242,10 +241,12 @@ try {
     author: user.uid,
     description,
   })
-  
+  console.log('test2')
+
   const savedStory = await story.save()
   user.storyboard = user.storyboard.concat(savedStory._id)
-  
+  console.log('test3')
+
   await User.findByIdAndUpdate(
     {
       _id: user.uid,
@@ -257,6 +258,8 @@ try {
       new: true,
     }
     )
+    console.log('test4')
+
     res.status(201).send(savedStory)
   } catch (error) {
     res.status(422).send({ error: error })
