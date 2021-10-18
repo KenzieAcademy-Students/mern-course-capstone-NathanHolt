@@ -230,16 +230,17 @@ router.post('/create/story', async (req, res) => {
 const { name, description, user } = req.body
 console.log('test1')
 const story = await Story.findOne({ name: name })
+const userFind = await User.findOne({ username: user.username })
 if (story && user.uid === story.author.toString())
 return res
 .status(422)
 .json({ error: 'story with that name already exists!' })
   
 try {
-  console.log(user)
+  console.log(userFind)
   const story = new Story({
     name,
-    author: user._id,
+    author: userFind._id,
     description,
   })
   console.log('test2')
