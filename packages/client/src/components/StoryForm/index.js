@@ -22,9 +22,9 @@ export default function StoryForm() {
     event.preventDefault()
     const newInfo = await axios.get(`/api/dev/storyboard/all/${user.username}`)
     let res = await instance.post('dev/create/story', {
-       name,
-       description,
-       user : newInfo.data,
+      name,
+      description,
+      user: newInfo.data,
     })
     initialSet(res.data)
     history.push(`/story/${name}`)
@@ -46,6 +46,7 @@ export default function StoryForm() {
           <Form.Group size='lg' controlId='description'>
             <Form.Label>Add a description</Form.Label>
             <Form.Control
+              as='textarea'
               type='description'
               value={description}
               onChange={(e) => setDescription(e.target.value)}
