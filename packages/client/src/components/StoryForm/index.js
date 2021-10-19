@@ -27,7 +27,7 @@ export default function StoryForm() {
       user: newInfo.data,
     })
     initialSet(res.data)
-    history.push(`/story/${res.data._id}`)
+    history.push(`/story/${name}`)
   }
 
   return (
@@ -46,6 +46,7 @@ export default function StoryForm() {
           <Form.Group size='lg' controlId='description'>
             <Form.Label>Add a description</Form.Label>
             <Form.Control
+              as='textarea'
               type='description'
               value={description}
               onChange={(e) => setDescription(e.target.value)}
