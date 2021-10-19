@@ -13,7 +13,6 @@ export default function UserHeader(props) {
           <div className="nav">
             <Button variant="secondary" onClick={() => displayer('story')}>Stories</Button> 
             <Button variant="outline-dark" onClick={() => displayer('story-form')}>Create new Story</Button> 
-            {/* <Button variant="secondary" onClick={() => displayer('user')}>Edit Account</Button>  */}
           </div>
           <div className="log-out">
             <LogOutBtn />
