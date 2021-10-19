@@ -22,12 +22,12 @@ export default function StoryForm() {
     event.preventDefault()
     const newInfo = await axios.get(`/api/dev/storyboard/all/${user.username}`)
     let res = await instance.post('dev/create/story', {
-       name,
-       description,
-       user : newInfo.data,
+      name,
+      description,
+      user: newInfo.data,
     })
     initialSet(res.data)
-    history.push(`/story/${name}`)
+    history.push(`/story/${res.data._id}`)
   }
 
   return (
