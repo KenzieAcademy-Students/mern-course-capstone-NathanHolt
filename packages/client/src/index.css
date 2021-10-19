@@ -100,6 +100,13 @@ html {
   border-radius: 10px;
 }
 
+.member {
+  height: 300px;
+  width: 320px;
+  background: #283a4e;
+  border-radius: 10px;
+}
+
 .feature > p {
   width: 50%;
 }
