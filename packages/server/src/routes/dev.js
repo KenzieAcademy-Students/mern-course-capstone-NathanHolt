@@ -227,38 +227,38 @@ router.delete('/delete/:id', async (req, res) => {
 
 // Create a story
 router.post('/create/story', async (req, res) => {
-const { name, description, user } = req.body
-console.log('test1')
-const story = await Story.findOne({ name: name })
-const userFind = await User.findOne({ username: user.username })
-if (story && user.uid === story.author.toString())
-return res
-.status(422)
-.json({ error: 'story with that name already exists!' })
-  
-try {
-  console.log(userFind)
-  const story = new Story({
-    name,
-    author: userFind._id,
-    description,
-  })
-  console.log('test2')
+  const { name, description, user } = req.body
+  console.log('test1')
+  const story = await Story.findOne({ name: name })
+  const userFind = await User.findOne({ username: user.username })
+  if (story && user.uid === story.author.toString())
+    return res
+      .status(422)
+      .json({ error: 'story with that name already exists!' })
 
-  const savedStory = await story.save() 
-  // user.storyboard = user.storyboard.concat(savedStory._id)
-  console.log('test3')
+  try {
+    console.log({ userFind })
+    const story = new Story({
+      name,
+      author: userFind._id,
+      description,
+    })
+    console.log('test2')
 
-  await User.findByIdAndUpdate(
-    {
-      _id: userFind._id,
-    },
-    {
-      $push: { storyboard: savedStory._id },
-    },
-    {
-      new: true,
-    }
+    const savedStory = await story.save()
+    // user.storyboard = user.storyboard.concat(savedStory._id)
+    console.log('test3')
+
+    await User.findByIdAndUpdate(
+      {
+        _id: userFind._id,
+      },
+      {
+        $push: { storyboard: savedStory._id },
+      },
+      {
+        new: true,
+      }
     )
     console.log('test4')
 
@@ -272,20 +272,20 @@ try {
 router.post('/character/create', async (req, res) => {
   const { id, name, description, color } = req.body
   // const { user } = req.body
-  
+
   try {
     let story = await Story.findOne({ _id: id })
     // if (story && story.author.toString() === user._id) {
-      if (story) {
-        const character = new Character({
-          name,
-          description,
-          color,
-        })
-      
+    if (story) {
+      const character = new Character({
+        name,
+        description,
+        color,
+      })
+
       const savedCharacter = await character.save()
       // story.characters = story.characters.concat(savedCharacter._id)
-      
+
       await Story.findByIdAndUpdate(
         {
           _id: id,
@@ -300,7 +300,7 @@ router.post('/character/create', async (req, res) => {
       res.status(201).send(savedCharacter)
     }
   } catch (err) {
-    res.status(422).send( err)
+    res.status(422).send(err)
   }
 })
 
