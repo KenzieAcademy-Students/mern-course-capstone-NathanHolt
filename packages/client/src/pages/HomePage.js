@@ -115,11 +115,11 @@ export default function HomePage(props) {
                     A spectacular front end developer! He worked and hard and prevailed though it all.
                   </p>
                 </div>
-                <img className='member' alt='beauty shot' />
+                <img className='member' src='../../kevin.jpg' alt='beauty shot' />
               </li>
               <li>
-                <img className='member'  alt='beauty shot' />
-                <div className='member-text'>
+                <img src='../../datapirates.png' className='member'  alt='beauty shot' />
+                <div  className='member-text'>
                   <h5>
                     Anthony Klein - <em>SCRUM Master</em>
                   </h5>
