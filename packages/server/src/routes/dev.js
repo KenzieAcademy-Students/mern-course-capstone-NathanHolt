@@ -228,26 +228,24 @@ router.delete('/delete/:id', async (req, res) => {
 // Create a story
 router.post('/create/story', async (req, res) => {
   const { name, description, user } = req.body
-  console.log('test1')
+
   const story = await Story.findOne({ name: name })
   const userFind = await User.findOne({ username: user.username })
+
   if (story && user.uid === story.author.toString())
     return res
       .status(422)
       .json({ error: 'story with that name already exists!' })
 
   try {
-    console.log({ userFind })
     const story = new Story({
       name,
       author: userFind._id,
       description,
     })
-    console.log('test2')
 
     const savedStory = await story.save()
     // user.storyboard = user.storyboard.concat(savedStory._id)
-    console.log('test3')
 
     await User.findByIdAndUpdate(
       {
@@ -260,7 +258,6 @@ router.post('/create/story', async (req, res) => {
         new: true,
       }
     )
-    console.log('test4')
 
     res.status(201).send(savedStory)
   } catch (error) {
@@ -271,7 +268,6 @@ router.post('/create/story', async (req, res) => {
 // Create a character
 router.post('/character/create', async (req, res) => {
   const { id, name, description, color } = req.body
-  // const { user } = req.body
 
   try {
     let story = await Story.findOne({ _id: id })
