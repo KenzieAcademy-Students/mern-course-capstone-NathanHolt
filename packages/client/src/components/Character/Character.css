@@ -48,6 +48,10 @@
   cursor: pointer;
 }
 
+.delete-char:hover {
+  background: rgba(214, 23, 23, 0.4);
+}
+
 .add-char {
   display: flex;
   align-items: center;
@@ -62,4 +66,8 @@
   color: antiquewhite;
   z-index: 10;
   cursor: pointer;
+}
+
+.add-char:hover {
+  background: rgba(23, 214, 48, 0.4);
 }
