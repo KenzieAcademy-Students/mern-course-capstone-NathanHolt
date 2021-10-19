@@ -1,3 +1,7 @@
 #description {
   min-height: 140px;
 }
+
+form {
+  min-width: min-content;
+}
