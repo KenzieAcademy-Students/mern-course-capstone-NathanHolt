@@ -118,7 +118,7 @@ export default function HomePage(props) {
                 <img className='member' src='../../kevin.jpg' alt='beauty shot' />
               </li>
               <li>
-                <img src='../../datapirates.png' className='member'  alt='beauty shot' />
+                <img src='../../WIN_20210128_18_36_42_Pro.jpg' className='member'  alt='beauty shot' />
                 <div  className='member-text'>
                   <h5>
                     Anthony Klein - <em>SCRUM Master</em>
