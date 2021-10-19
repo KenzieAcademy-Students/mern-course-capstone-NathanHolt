@@ -23,13 +23,6 @@ export default function Action(props) {
         setTempName(name)
         handleShow2()
     }
-
-    // const findPosition = () => {
-    //     if (position === 0) return 0
-    //     let newPos = position - length 
-    //     if (newPos < 0) newPos = newPos * -1 
-    //     return newPos 
-    // }
     
     return (
         <>
@@ -51,9 +44,7 @@ export default function Action(props) {
                 <Button variant="secondary" onClick={handleClose}>
                     Close
                 </Button>
-                {/* <Button variant="primary" onClick={() => handleEdit(title)}>
-                    Edit
-                </Button> */}
+
                 <Button variant="danger" onClick={() => deletePath({ title: title, name: name })}>
                     Delete
                 </Button>
